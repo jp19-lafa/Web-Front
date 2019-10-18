@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 //// Routing Module ////
 import { AppRoutingModule } from './app-routing.module';
@@ -23,8 +24,8 @@ import { NavigationComponent } from './global/navigation/navigation.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AuthenticationModule
-
+    AuthenticationModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
