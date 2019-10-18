@@ -9,9 +9,10 @@ import { TokenInterceptor } from './token.interceptor';
 
 //// Services ////
 import { AuthenticationService } from './authentication.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [LoginComponent],
   providers: [
     AuthenticationService,
     {
