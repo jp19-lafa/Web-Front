@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faEnvelope, faLock, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +8,20 @@ import { faEnvelope, faLock, IconDefinition } from '@fortawesome/free-solid-svg-
 })
 export class LoginComponent implements OnInit {
 
-  public faEnvelope = faEnvelope;
-  public faLock = faLock;
+  constructor(private formBuilder: FormBuilder) { }
 
-  constructor() { }
+  loginForm: FormGroup;
 
   ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    })
   }
 
+  onSubmit(form: FormGroup) {
+    console.log('Valid?', form.valid);
+    console.log('Email', form.value.email);
+    console.log('Password', form.value.password);
+  }
 }
