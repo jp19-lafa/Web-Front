@@ -22,7 +22,7 @@ export class AuthenticationService {
     });
   }
 
-  login(user: { username: string, password: string }): Observable<any> {
+  login(user: { email: string, password: string }): Observable<any> {
     return this.http.post<any>(`${environment.api}/auth/login`, user)
       .pipe(
         tap(tokens => this.storeTokens(tokens)),
@@ -64,13 +64,13 @@ export class AuthenticationService {
   }
 
   private storeTokens(tokens: Tokens) {
-    this.userLoginStateObserver.next(true);
+    // this.userLoginStateObserver.next(true);
     localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
-    localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
+    localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh);
   }
 
   private removeTokens() {
-    this.userLoginStateObserver.next(false);
+    // this.userLoginStateObserver.next(false);
     localStorage.removeItem(this.JWT_TOKEN);
     localStorage.removeItem(this.REFRESH_TOKEN);
   }
