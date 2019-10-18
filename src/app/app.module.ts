@@ -30,8 +30,7 @@ import { PublicDataService } from './pages/public/public-data.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AuthenticationModule
-
+    AuthenticationModule,
   ],
   providers: [PublicDataService],
   bootstrap: [AppComponent]

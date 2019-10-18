@@ -9,7 +9,11 @@ export class PublicDataService {
       _id: '1',
       title: 'AP Hogeschool',
       status: 'Active',
-      info: 'Node located in Antwerp Ellermanstraat 14. Educational use.'
+      info: 'Node located in Antwerp Ellermanstraat 14. Educational use.',
+      tempDataSet: ['0', '10', '20', '30', '40'],
+      lvl1DataSet: ['50', '40', '30', '20', '10'],
+      lvl2DataSet: ['45', '40', '35', '30', '25'],
+      lvl3DataSet: ['25', '30', '35', '40', '45'],
     },
     {
       _id: '2',
@@ -32,4 +36,8 @@ export interface Node {
   title: string,
   status: string,
   info: string,
+  tempDataSet?: string[],
+  lvl1DataSet?: string[],
+  lvl2DataSet?: string[],
+  lvl3DataSet?: string[],
 }

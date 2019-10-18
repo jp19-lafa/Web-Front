@@ -3,6 +3,16 @@
   <app-public-node-card *ngFor="let node of nodes" [node]='node'></app-public-node-card>
 </div>
 <div class="divider"></div>
-<div class='showPage' *ngIf="publicDataSvc.activePage != null">
+<div class="farmTitle">
   <h2>{{publicDataSvc.activePage.title}}</h2>
+</div>
+<div class='showPage' *ngIf="publicDataSvc.activePage != null">
+  <div class="graphs">
+    <div class="chartInfo">
+      <canvas class="chart" #tempChart></canvas>
+    </div>
+    <div class="chartInfo">
+      <canvas class='chart' #waterLevelChart></canvas>
+    </div>
+  </div>
 </div>
