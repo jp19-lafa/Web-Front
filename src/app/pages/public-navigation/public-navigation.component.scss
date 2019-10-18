@@ -1,21 +1,24 @@
 .topNavigation {
+  font-family: 'Poppins', sans-serif;
   position: fixed;
   height: 3rem;
   width: 100vw;
-  background: #E5E5E5;
-  opacity: 30%;
+  background: rgba(167, 167, 167, .2);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 8rem 1fr 12rem 5rem;
 
   .logo {
     text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 2rem;
 
-    h2 {
+    strong {
+      padding: 0 .5rem 0 2rem;
       line-height: 3rem;
     }
 
     .smallLogo {
-      img {}
+      padding: .5rem 0;
     }
   }
 
@@ -23,12 +26,19 @@
 
   .navTabs {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 
     .tab {
       text-align: center;
+      line-height: 3rem;
     }
   }
 
-  .loginButton {}
+  .loginButton {
+    .tab {
+      text-align: center;
+      line-height: 3rem;
+      color: #4CAF50;
+    }
+  }
 }
