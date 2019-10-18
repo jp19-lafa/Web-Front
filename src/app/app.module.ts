@@ -11,15 +11,18 @@ import { AppRoutingModule } from './app-routing.module';
 //// Components ////
 import { AppComponent } from './app.component';
 import { PublicComponent } from './pages/public/public.component';
-import { PublicNavigationComponent } from './pages/public-navigation/public-navigation.component';
+import { PublicNavigationComponent } from './pages/public/public-navigation/public-navigation.component';
 import { NavigationComponent } from './global/navigation/navigation.component';
+import { PublicNodeCardComponent } from './pages/public/public-node-card/public-node-card.component';
+import { PublicDataService } from './pages/public/public-data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     PublicComponent,
     PublicNavigationComponent,
-    NavigationComponent
+    NavigationComponent,
+    PublicNodeCardComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { NavigationComponent } from './global/navigation/navigation.component';
     AuthenticationModule
 
   ],
-  providers: [],
+  providers: [PublicDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

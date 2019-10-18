@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Node, PublicDataService } from 'src/app/pages/public/public-data.service';
 
 @Component({
   selector: 'app-public',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./public.component.scss']
 })
 export class PublicComponent implements OnInit {
-
-  constructor() { }
+  nodes: Node[] = [];
+  constructor(private publicDataSvc: PublicDataService) {
+    this.nodes = this.publicDataSvc.nodes;
+  }
 
   ngOnInit() {
   }

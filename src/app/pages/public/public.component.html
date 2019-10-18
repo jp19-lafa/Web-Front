@@ -1,2 +1,7 @@
 <app-public-navigation></app-public-navigation>
-<div class="farms"></div>
+<div class="farms">
+  <app-public-node-card *ngFor="let node of nodes" [node]='node'></app-public-node-card>
+</div>
+<div class="divider"></div>
+<div>
+</div>

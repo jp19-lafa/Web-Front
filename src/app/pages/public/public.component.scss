@@ -1,1 +1,11 @@
+.farms {
+  padding: 5rem 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 
+.divider {
+  height: 1px;
+  margin: 3rem 1rem 3rem 1rem;
+  background: #4CAF50;
+}
