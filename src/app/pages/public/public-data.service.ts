@@ -24,6 +24,7 @@ export class PublicDataService {
       info: 'Node located in the city of dummy.Educational use.',
     },
   ]
+  activePage: Node = this.nodes[0];
   constructor() { }
 }
 export interface Node {

@@ -14,5 +14,4 @@ export class PublicComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

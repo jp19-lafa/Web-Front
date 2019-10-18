@@ -3,5 +3,6 @@
   <app-public-node-card *ngFor="let node of nodes" [node]='node'></app-public-node-card>
 </div>
 <div class="divider"></div>
-<div>
+<div class='showPage' *ngIf="publicDataSvc.activePage != null">
+  <h2>{{publicDataSvc.activePage.title}}</h2>
 </div>

@@ -1,4 +1,4 @@
-<div class="farm" *ngIf="node.title != null">
+<div class="farm" *ngIf="node.title != null" (click)="showFarm()">
   <div class="title">
     <strong>{{node.title}}</strong>
     <div class="status">
