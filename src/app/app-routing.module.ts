@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PublicComponent } from './pages/public/public.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'public', component: PublicComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
