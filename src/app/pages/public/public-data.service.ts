@@ -20,6 +20,7 @@ export class PublicDataService {
       title: 'Wife of Tim Dams school',
       status: 'Deactivated',
       info: 'Node located somewhere in Antwerp. Educational use STEM.',
+      tempDataSet: ['40', '30', '20', '10', '0'],
     },
     {
       _id: '3',

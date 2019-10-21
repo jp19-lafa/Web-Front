@@ -15,6 +15,9 @@ import { PublicNavigationComponent } from './pages/public/public-navigation/publ
 import { NavigationComponent } from './global/navigation/navigation.component';
 import { PublicNodeCardComponent } from './pages/public/public-node-card/public-node-card.component';
 import { PublicDataService } from './pages/public/public-data.service';
+import { PublicGraphComponent } from './pages/public/public-graph/public-graph.component';
+import { PublicHomeComponent } from './pages/public/public-home/public-home.component';
+import { PublicFooterComponent } from './pages/public/public-footer/public-footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { PublicDataService } from './pages/public/public-data.service';
     PublicComponent,
     PublicNavigationComponent,
     NavigationComponent,
-    PublicNodeCardComponent
+    PublicNodeCardComponent,
+    PublicGraphComponent,
+    PublicHomeComponent,
+    PublicFooterComponent
   ],
   imports: [
     BrowserModule,

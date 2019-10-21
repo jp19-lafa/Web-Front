@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./public-navigation.component.scss']
 })
 export class PublicNavigationComponent implements OnInit {
-  constructor() {
-  }
+  constructor() { }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() { }
 }

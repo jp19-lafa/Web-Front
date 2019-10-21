@@ -8,11 +8,9 @@
 </div>
 <div class='showPage' *ngIf="publicDataSvc.activePage != null">
   <div class="graphs">
-    <div class="chartInfo">
-      <canvas class="chart" #tempChart></canvas>
-    </div>
-    <div class="chartInfo">
-      <canvas class='chart' #waterLevelChart></canvas>
-    </div>
+    <app-public-graph></app-public-graph>
+    <app-public-graph></app-public-graph>
+    <app-public-graph></app-public-graph>
+    <app-public-graph></app-public-graph>
   </div>
 </div>
