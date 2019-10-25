@@ -2,9 +2,9 @@
 <div class="farms">
   <app-public-node-card *ngFor="let node of nodes" [node]='node'></app-public-node-card>
 </div>
-<div class="divider"></div>
+<!-- <div class="divider"></div> -->
 <div class="farmTitle">
-  <h2>{{publicDataSvc.activePage.title}}</h2>
+  <p>{{publicDataSvc.activePage.title}}</p>
 </div>
 <div class='showPage' *ngIf="publicDataSvc.activePage != null">
   <div class="graphs">
