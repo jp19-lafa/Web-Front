@@ -1,12 +1,12 @@
-<div class="farm" *ngIf="node.title != null" (click)="showFarm()">
+<div class="farm" *ngIf="node.label != null" (click)="showFarm()">
   <div class="title">
-    <p id="nodeTitle">{{node.title}}</p>
+    <p id="nodeTitle">{{node.label}}</p>
     <div class="status">
-      <p>{{node.status}}</p>
+      <p>{{statusMsg}}</p>
       <div class="circle" #status></div>
     </div>
     <div class="shortInfo">
-      <p>{{node.info}}</p>
+      <p></p>
     </div>
   </div>
 </div>

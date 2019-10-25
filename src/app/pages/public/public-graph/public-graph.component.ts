@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import * as Chart from 'chart.js';
-import { PublicDataService } from '../public-data.service';
+import { Nodes, PublicDataService } from '../public-data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-public-graph',
@@ -11,17 +12,15 @@ export class PublicGraphComponent implements OnInit {
   @ViewChild('chartCanvas', { static: false }) chartCanvas: ElementRef;
   context: CanvasRenderingContext2D;
   chart: any;
-  constructor(private publicDataSvc: PublicDataService) { }
+  nodeInfo: Nodes;
+  tempValues: number[] = [];
+  constructor(private publicDataSvc: PublicDataService, private http: HttpClient) { }
 
   ngAfterViewInit(): void {
     this.context = this.chartCanvas.nativeElement.getContext('2d');
     this.createTempChart();
   }
   ngOnInit() {
-  }
-
-  updateChart() {
-
   }
 
   createTempChart() {
@@ -32,7 +31,7 @@ export class PublicGraphComponent implements OnInit {
         datasets: [{
           label: 'temperature of the water',
           fill: false,
-          data: this.publicDataSvc.activePage.tempDataSet,
+          data: this.publicDataSvc.activePage.sensors.airtemp,
           backgroundColor: [
             'rgba(76, 175, 80, 1)'
           ],
