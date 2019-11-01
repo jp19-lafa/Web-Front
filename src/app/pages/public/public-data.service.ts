@@ -5,10 +5,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PublicDataService {
-  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWRpZW5jZSI6ImF1ZDoqIiwiaXNzdWVyIjoiRmFybUxhYlRlYW0iLCJzdWIiOiI1ZGIyYzNkZGJiMWZjNDAwMTIwNGNhOGEiLCJpYXQiOjE1NzE5OTY5NzIsImV4cCI6MTU3MjA4MzM3Mn0.hscNBknCYgJ07hqYD5qjb9SqW9Pmkd0f9mOuaBDu2sU';
+  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWRpZW5jZSI6ImF1ZDoqIiwiaXNzdWVyIjoiRmFybUxhYlRlYW0iLCJzdWIiOiI1ZGIyYzNkZGJiMWZjNDAwMTIwNGNhOGEiLCJpYXQiOjE1NzI2Mjc0OTIsImV4cCI6MTU3MjcxMzg5Mn0.evLAj08yQNZFyIqOVnhjumsjc4f2TMvvtg0aytC9vT4';
   nodes: Nodes[] = [
     {
-      _id: '5dac6817b97a6629ec4ec805',
+      _id: '5db2c3fdbb1fc4001204ca8b',
       status: true,
       allowPublicStats: true,
       label: 'Development Node Alfa',
@@ -24,15 +24,8 @@ export class PublicDataService {
   getNodesID(id) {
     return this.http.get<Nodes>('https://api.staging.farmlab.team/nodes/' + id, this.getHeaders(this.token));
   }
-  getNodeID(id): any {
-    console.log('getNodeID() called');
-    this.getNodeID(id).subscribe((nodeinfo) => {
-      console.log(nodeinfo);
-    });
-  }
-  getInfo(id) {
-    console.log('getInfo()');
-    this.getNodeID(id);
+  getSensorsID(id) {
+    return this.http.get<Nodes>('https://api.staging.farmlab.team/nodes/' + id + '/sensors', this.getHeaders(this.token));
   }
 
   getHeaders(token: string) {
@@ -53,11 +46,15 @@ export interface Nodes {
   actuators?: Actuators,
 }
 export interface Sensors {
-  airtemp: [],
-  watertemp: [],
-  lightstr: [],
-  airhumidity: [],
-  waterph: []
+  airtemp: SensorData[],
+  watertemp: SensorData[],
+  lightstr: SensorData[],
+  airhumidity: SensorData[],
+  waterph: SensorData[]
+}
+export interface SensorData {
+  value: string,
+  timestamp: Date,
 }
 export interface Actuators {
   lightint: Actuator,

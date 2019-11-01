@@ -23,18 +23,18 @@ export class PublicNodeCardComponent implements OnInit {
   }
   showFarm() {
     this.publicDataSvc.activePage = this.publicDataSvc.nodes.filter(node => {
-      console.log(node._id);
-
       return node._id === this.node._id;
     })[0];
-    this.publicDataSvc.getInfo(this.node._id);
+    this.publicDataSvc.getSensorsID(this.node._id).subscribe((sensordata) => {
+      console.log(sensordata);
+    });
   }
   displayStatus() {
     if (this.node.status) {
       this.statusMsg = 'active';
     }
     else if (!this.node.status) {
-      this.statusMsg = 'deactivated';
+      this.statusMsg = 'offline';
     };
   }
   setColorOfStatusCircle() {
