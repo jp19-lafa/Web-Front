@@ -6,10 +6,17 @@
   grid-auto-rows: 1fr;
 }
 
+@media only screen and (max-width: 960px) {
+  .farms {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+  }
+}
+
 .divider {
   height: 1px;
   margin: 3rem 1rem 3rem 1rem;
-  background: #4CAF50;
+  background: rgb(76, 173, 79);
 }
 
 .farmTitle {
@@ -28,5 +35,14 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 1fr;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .showPage {
+    .graphs {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+    }
   }
 }

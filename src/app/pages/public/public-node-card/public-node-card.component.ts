@@ -36,10 +36,10 @@ export class PublicNodeCardComponent implements OnInit {
   }
   displayStatus() {
     if (this.node.status) {
-      this.statusMsg = 'active';
+      this.statusMsg = 'Online';
     }
     else if (!this.node.status) {
-      this.statusMsg = 'offline';
+      this.statusMsg = 'Offline';
     };
   }
   setColorOfStatusCircle() {
