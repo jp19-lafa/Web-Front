@@ -23,10 +23,15 @@ export class PublicNodeCardComponent implements OnInit {
   }
   showFarm() {
     this.publicDataSvc.activePage = this.publicDataSvc.nodes.filter(node => {
+      node._id = this.publicDataSvc.IdOfClickedFarm;
       return node._id === this.node._id;
     })[0];
-    this.publicDataSvc.getSensorsID(this.node._id).subscribe((sensordata) => {
+    this.getNodeData();
+  }
+  getNodeData() {
+    this.publicDataSvc.getSensorsID(this.publicDataSvc.IdOfClickedFarm).subscribe((sensordata) => {
       console.log(sensordata);
+      sensordata = this.publicDataSvc.ActiveNodeData
     });
   }
   displayStatus() {

@@ -1,33 +1,25 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as Chart from 'chart.js';
-import { PublicDataService, SensorData } from '../public-data.service';
-import { HttpClient } from '@angular/common/http';
+import { PublicDataService } from '../../public-data.service';
 
 @Component({
-  selector: 'app-public-graph',
-  templateUrl: './public-graph.component.html',
-  styleUrls: ['./public-graph.component.scss']
+  selector: 'app-water-temperature',
+  templateUrl: './water-temperature.component.html',
+  styleUrls: ['./water-temperature.component.scss']
 })
-export class PublicGraphComponent implements OnInit {
-  @ViewChild('chartCanvas', { static: false }) chartCanvas: ElementRef;
+export class WaterTemperatureComponent implements OnInit {
+  @ViewChild('canvasContext', { static: false }) canvas: ElementRef;
   context: CanvasRenderingContext2D;
   chart: any;
-  tempValues: SensorData[] = [];
-  constructor(private publicDataSvc: PublicDataService, private http: HttpClient) { }
+
+  constructor(private publicDataSvc: PublicDataService) { }
 
   ngAfterViewInit(): void {
-    this.context = this.chartCanvas.nativeElement.getContext('2d');
+    this.context = this.canvas.nativeElement.getContext('2d');
     this.createTempChart();
   }
-  ngOnInit() {
-    this.GetSensorData();
-  }
 
-  GetSensorData() {
-    this.publicDataSvc.getSensorsID(this.publicDataSvc.activePage._id).subscribe((sensordata) => {
-      this.tempValues = sensordata.sensors.airtemp;
-    });
-  }
+  ngOnInit() { }
 
   createTempChart() {
     this.chart = new Chart(this.context, {
@@ -35,9 +27,9 @@ export class PublicGraphComponent implements OnInit {
       data: {
         labels: ['Now', '1 hour ago', '2 hours ago', '3 hours ago', '4 hours ago'],
         datasets: [{
-          label: 'temperature of the water',
+          label: 'Temperature in °C',
           fill: false,
-          data: this.tempValues,
+          data: ['12', '52', '34', '12'],//this.publicDataSvc.ActiveNodeData.sensors.watertemp
           backgroundColor: [
             'rgba(76, 175, 80, 1)'
           ],
@@ -50,7 +42,7 @@ export class PublicGraphComponent implements OnInit {
       options: {
         title: {
           display: true,
-          text: 'Temperature in °C from the last 4 hours'
+          text: 'Water Temperature '
         },
         scales: {
           yAxes: [{
@@ -64,5 +56,6 @@ export class PublicGraphComponent implements OnInit {
       }
     });
   }
+
 
 }

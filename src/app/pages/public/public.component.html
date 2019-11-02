@@ -8,9 +8,13 @@
 </div>
 <div class='showPage' *ngIf="publicDataSvc.activePage != null">
   <div class="graphs">
+    <app-air-humidity></app-air-humidity>
+    <app-air-temperature></app-air-temperature>
+    <app-water-temperature></app-water-temperature>
+    <app-light-intensisty></app-light-intensisty>
+    <!-- <app-public-graph [chartData]='publicDataSvc.ActiveNodeData'></app-public-graph>
     <app-public-graph></app-public-graph>
     <app-public-graph></app-public-graph>
-    <app-public-graph></app-public-graph>
-    <app-public-graph></app-public-graph>
+    <app-public-graph></app-public-graph> -->
   </div>
 </div>

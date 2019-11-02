@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PublicDataService {
-  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWRpZW5jZSI6ImF1ZDoqIiwiaXNzdWVyIjoiRmFybUxhYlRlYW0iLCJzdWIiOiI1ZGIyYzNkZGJiMWZjNDAwMTIwNGNhOGEiLCJpYXQiOjE1NzI2Mjc0OTIsImV4cCI6MTU3MjcxMzg5Mn0.evLAj08yQNZFyIqOVnhjumsjc4f2TMvvtg0aytC9vT4';
+  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWRpZW5jZSI6ImF1ZDoqIiwiaXNzdWVyIjoiRmFybUxhYlRlYW0iLCJzdWIiOiI1ZGIyYzNkZGJiMWZjNDAwMTIwNGNhOGEiLCJpYXQiOjE1NzI2ODM2MTgsImV4cCI6MTU3Mjc3MDAxOH0.vNy9jPOhYpw5RLnd8WfA5rG4pxFnH9ohJ1AvKhye_i0';
   nodes: Nodes[] = [
     {
       _id: '5db2c3fdbb1fc4001204ca8b',
@@ -15,6 +15,9 @@ export class PublicDataService {
     }
   ]
   activePage: Nodes = this.nodes[0];
+
+  ActiveNodeData: Nodes;
+  IdOfClickedFarm: string;
   constructor(private http: HttpClient) {
     //this.getNodeID('5dac6817b97a6629ec4ec805');
   }

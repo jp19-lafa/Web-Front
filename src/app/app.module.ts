@@ -18,6 +18,10 @@ import { PublicDataService } from './pages/public/public-data.service';
 import { PublicGraphComponent } from './pages/public/public-graph/public-graph.component';
 import { PublicHomeComponent } from './pages/public/public-home/public-home.component';
 import { PublicFooterComponent } from './pages/public/public-footer/public-footer.component';
+import { WaterTemperatureComponent } from './pages/public/charts/water-temperature/water-temperature.component';
+import { AirTemperatureComponent } from './pages/public/charts/air-temperature/air-temperature.component';
+import { LightIntensistyComponent } from './pages/public/charts/light-intensisty/light-intensisty.component';
+import { AirHumidityComponent } from './pages/public/charts/air-humidity/air-humidity.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { PublicFooterComponent } from './pages/public/public-footer/public-foote
     PublicNodeCardComponent,
     PublicGraphComponent,
     PublicHomeComponent,
-    PublicFooterComponent
+    PublicFooterComponent,
+    WaterTemperatureComponent,
+    AirTemperatureComponent,
+    LightIntensistyComponent,
+    AirHumidityComponent
   ],
   imports: [
     BrowserModule,
