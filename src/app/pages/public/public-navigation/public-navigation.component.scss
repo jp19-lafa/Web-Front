@@ -7,7 +7,7 @@
   width: 100vw;
   background: rgb(237, 237, 237);
   display: grid;
-  grid-template-columns: 8rem 1fr 12rem 5rem;
+  grid-template-columns: 8rem 1fr 6rem 6rem;
 
   .logo {
     text-align: center;
@@ -28,7 +28,7 @@
 
   .navTabs {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
 
     .tab {
       text-align: center;
