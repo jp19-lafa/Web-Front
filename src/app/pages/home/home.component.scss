@@ -1,0 +1,10 @@
+
+.grid {
+  display: grid;
+  grid: minmax(calc(100vh - 72px), auto) / 300px auto;
+  nav {
+    background: white;
+    z-index: 9;
+  }
+  main {}
+}

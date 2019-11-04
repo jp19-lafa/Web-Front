@@ -9,6 +9,7 @@ header {
   padding: 0 5rem;
   display: flex;
   justify-content: space-between;
+  z-index: 99;
   .left {
     line-height: $header-height;
     font-size: 1.6rem;
