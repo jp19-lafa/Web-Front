@@ -13,6 +13,13 @@
   }
 }
 
+@media only screen and (max-width: 650px) {
+  .farms {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+  }
+}
+
 .divider {
   height: 1px;
   margin: 3rem 1rem 3rem 1rem;
