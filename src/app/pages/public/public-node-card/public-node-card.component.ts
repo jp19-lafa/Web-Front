@@ -27,7 +27,6 @@ export class PublicNodeCardComponent implements OnInit {
     this.publicDataSvc.activePage = this.publicDataSvc.nodes.filter(farm => {
       return farm._id === this.node._id;
     })[0];
-    console.log(this.publicDataSvc.activePage._id);
     this.getNodeData();
   }
   getNodeData() {
@@ -35,11 +34,11 @@ export class PublicNodeCardComponent implements OnInit {
       this.publicDataSvc.AirTempSensorValues = sensordata.sensors.airtemp.map(val => val.value);
       this.publicDataSvc.AirTempSensorTimes = sensordata.sensors.airtemp.map(time => time.timestamp);
       this.publicDataSvc.AirHumSensorValues = sensordata.sensors.airhumidity.map(val => val.value);
-      this.publicDataSvc.AirHumSensorTimes = sensordata.sensors.airhumidity.map(val => val.timestamp);
+      this.publicDataSvc.AirHumSensorTimes = sensordata.sensors.airhumidity.map(time => time.timestamp);
       this.publicDataSvc.WaterTempSensorValues = sensordata.sensors.watertemp.map(val => val.value);
-      this.publicDataSvc.WaterTempSensorTimes = sensordata.sensors.watertemp.map(val => val.timestamp);
+      this.publicDataSvc.WaterTempSensorTimes = sensordata.sensors.watertemp.map(time => time.timestamp);
       this.publicDataSvc.WaterPhSensorValues = sensordata.sensors.waterph.map(val => val.value);
-      this.publicDataSvc.WaterPhSensorTimes = sensordata.sensors.waterph.map(val => val.timestamp);
+      this.publicDataSvc.WaterPhSensorTimes = sensordata.sensors.waterph.map(time => time.timestamp);
     });
   }
   displayStatus() {
