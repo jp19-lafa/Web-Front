@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PublicDataService {
-  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWRpZW5jZSI6ImF1ZDoqIiwiaXNzdWVyIjoiRmFybUxhYlRlYW0iLCJzdWIiOiI1ZGIyYzNkZGJiMWZjNDAwMTIwNGNhOGEiLCJpYXQiOjE1NzI2ODM2MTgsImV4cCI6MTU3Mjc3MDAxOH0.vNy9jPOhYpw5RLnd8WfA5rG4pxFnH9ohJ1AvKhye_i0';
+  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWRpZW5jZSI6ImF1ZDoqIiwiaXNzdWVyIjoiRmFybUxhYlRlYW0iLCJzdWIiOiI1ZGIyYzNkZGJiMWZjNDAwMTIwNGNhOGEiLCJpYXQiOjE1NzI4NTc0OTgsImV4cCI6MTU3Mjk0Mzg5OH0.x8pLoO4H1C-rhk3OPpuStW3BXc76xM08bphTBhVc0Ms';
   nodes: Nodes[] = [
     {
       _id: '5db2c3fdbb1fc4001204ca8b',
