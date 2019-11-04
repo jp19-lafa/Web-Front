@@ -25,11 +25,11 @@ export class AirHumidityComponent implements OnInit {
     this.chart = new Chart(this.context, {
       type: 'line',
       data: {
-        labels: ['Now', '1 hour ago', '2 hours ago', '3 hours ago', '4 hours ago'],
+        labels: this.publicDataSvc.AirHumSensorTimes,
         datasets: [{
           label: 'Relative Air Humidity in %',
           fill: false,
-          data: ['12', '52', '34', '12'],//this.publicDataSvc.ActiveNodeData.sensors.airhumidity
+          data: this.publicDataSvc.AirHumSensorValues,
           backgroundColor: [
             'rgba(76, 175, 80, 1)'
           ],

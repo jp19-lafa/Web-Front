@@ -11,6 +11,8 @@ export class AirTemperatureComponent implements OnInit {
   @ViewChild('canvasContext', { static: false }) canvas: ElementRef;
   context: CanvasRenderingContext2D;
   chart: any;
+  tempValues;
+  tempTimes: [];
 
   constructor(private publicDataSvc: PublicDataService) { }
 
@@ -20,17 +22,24 @@ export class AirTemperatureComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.mapSensorData();
+  }
+
+  mapSensorData() {
+    this.tempValues = this.publicDataSvc.ActiveNodeData.sensors.airhumidity.map(value => {
+      console.log(value);
+    })
   }
 
   createTempChart() {
     this.chart = new Chart(this.context, {
       type: 'line',
       data: {
-        labels: ['Now', '1 hour ago', '2 hours ago', '3 hours ago', '4 hours ago'],
+        labels: this.publicDataSvc.AirTempSensorTimes,
         datasets: [{
           label: 'Temperature in °C',
           fill: false,
-          data: ['12', '52', '34', '12'],//this.publicDataSvc.ActiveNodeData.sensors.watertemp
+          data: this.publicDataSvc.AirTempSensorValues,//this.publicDataSvc.ActiveNodeData.sensors.watertemp
           backgroundColor: [
             'rgba(76, 175, 80, 1)'
           ],

@@ -15,7 +15,16 @@ export class PublicDataService {
     }
   ]
   activePage: Nodes = this.nodes[0];
-
+  AirTempSensorValues: Number[];
+  AirTempSensorTimes: Date[];
+  AirHumSensorValues: Number[];
+  AirHumSensorTimes: Date[];
+  LightSensorValues: Number[];
+  LightSensorTimes: Date[];
+  WaterTempSensorValues: Number[];
+  WaterTempSensorTimes: Date[];
+  WaterPhSensorValues: Number[];
+  WaterPhSensorTimes: Date[];
   ActiveNodeData: Nodes;
   IdOfClickedFarm: string;
   constructor(private http: HttpClient) {
@@ -56,7 +65,7 @@ export interface Sensors {
   waterph: SensorData[]
 }
 export interface SensorData {
-  value: string,
+  value: number,
   timestamp: Date,
 }
 export interface Actuators {

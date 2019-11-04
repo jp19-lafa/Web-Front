@@ -10,6 +10,8 @@ export class PublicNodeCardComponent implements OnInit {
   @Input('node') node: Nodes;
   statusMsg: string;
   clickedFarm: string;
+  values: number[];
+  times: Date[];
   @ViewChild('status', { static: false }) status: ElementRef;
 
   constructor(private publicDataSvc: PublicDataService, private renderer2: Renderer2) {
@@ -22,16 +24,22 @@ export class PublicNodeCardComponent implements OnInit {
     this.setColorOfStatusCircle();
   }
   showFarm() {
-    this.publicDataSvc.activePage = this.publicDataSvc.nodes.filter(node => {
-      node._id = this.publicDataSvc.IdOfClickedFarm;
-      return node._id === this.node._id;
+    this.publicDataSvc.activePage = this.publicDataSvc.nodes.filter(farm => {
+      return farm._id === this.node._id;
     })[0];
+    console.log(this.publicDataSvc.activePage._id);
     this.getNodeData();
   }
   getNodeData() {
-    this.publicDataSvc.getSensorsID(this.publicDataSvc.IdOfClickedFarm).subscribe((sensordata) => {
-      console.log(sensordata);
-      sensordata = this.publicDataSvc.ActiveNodeData
+    this.publicDataSvc.getSensorsID(this.publicDataSvc.activePage._id).subscribe(sensordata => {
+      this.publicDataSvc.AirTempSensorValues = sensordata.sensors.airtemp.map(val => val.value);
+      this.publicDataSvc.AirTempSensorTimes = sensordata.sensors.airtemp.map(time => time.timestamp);
+      this.publicDataSvc.AirHumSensorValues = sensordata.sensors.airhumidity.map(val => val.value);
+      this.publicDataSvc.AirHumSensorTimes = sensordata.sensors.airhumidity.map(val => val.timestamp);
+      this.publicDataSvc.WaterTempSensorValues = sensordata.sensors.watertemp.map(val => val.value);
+      this.publicDataSvc.WaterTempSensorTimes = sensordata.sensors.watertemp.map(val => val.timestamp);
+      this.publicDataSvc.WaterPhSensorValues = sensordata.sensors.waterph.map(val => val.value);
+      this.publicDataSvc.WaterPhSensorTimes = sensordata.sensors.waterph.map(val => val.timestamp);
     });
   }
   displayStatus() {
