@@ -22,24 +22,20 @@ export class AirTemperatureComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mapSensorData();
-  }
-
-  mapSensorData() {
-    this.tempValues = this.publicDataSvc.ActiveNodeData.sensors.airhumidity.map(value => {
-      console.log(value);
-    })
   }
 
   createTempChart() {
     this.chart = new Chart(this.context, {
       type: 'line',
       data: {
-        labels: this.publicDataSvc.AirTempSensorTimes,
+        labels: this.publicDataSvc.activePage.sensors.airtemp.history.map(time => {
+          let formatted = new Date(time.timestamp).getHours() + ':' + new Date(time.timestamp).getMinutes().toString();
+          return formatted;
+        }) || [],
         datasets: [{
           label: 'Temperature in °C',
           fill: false,
-          data: this.publicDataSvc.AirTempSensorValues,//this.publicDataSvc.ActiveNodeData.sensors.watertemp
+          data: this.publicDataSvc.activePage.sensors.airtemp.history.map(value => value.value) || [],
           backgroundColor: [
             'rgba(76, 175, 80, 1)'
           ],

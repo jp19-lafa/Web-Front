@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Nodes, PublicDataService } from 'src/app/pages/public/public-data.service';
+import { PublicDataService, PublicNode } from 'src/app/pages/public/public-data.service';
 
 @Component({
   selector: 'app-public',
@@ -7,18 +7,19 @@ import { Nodes, PublicDataService } from 'src/app/pages/public/public-data.servi
   styleUrls: ['./public.component.scss']
 })
 export class PublicComponent implements OnInit {
-  nodes: Nodes[] = [];
+  publicNodes: PublicNode[] = [];
   constructor(private publicDataSvc: PublicDataService) {
     window.scroll(0, 0);
   }
   ngOnInit() {
-    this.getAllNodes();
+    //this.getAllNodes();
+    this.getPublicNodes();
   }
 
-  getAllNodes() {
-    this.publicDataSvc.getAllNodes().subscribe((nodes) => {
-      this.nodes = nodes;
-      this.publicDataSvc.nodes = this.nodes;
+  getPublicNodes() {
+    this.publicDataSvc.getPublicData().subscribe(nodes => {
+      this.publicNodes = nodes;
+      this.publicDataSvc.publicNodes = this.publicNodes;
     });
   }
 }

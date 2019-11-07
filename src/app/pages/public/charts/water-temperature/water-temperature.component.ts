@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as Chart from 'chart.js';
-import { PublicDataService } from '../../public-data.service';
+import { PublicDataService, PublicNode } from '../../public-data.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-water-temperature',
@@ -20,16 +21,18 @@ export class WaterTemperatureComponent implements OnInit {
   }
 
   ngOnInit() { }
-
   createTempChart() {
     this.chart = new Chart(this.context, {
       type: 'line',
       data: {
-        labels: this.publicDataSvc.WaterTempSensorTimes,
+        labels: this.publicDataSvc.activePage.sensors.watertemp.history.map(time => {
+          let formatted = new Date(time.timestamp).getHours() + ':' + new Date(time.timestamp).getMinutes().toString();
+          return formatted;
+        }) || [],
         datasets: [{
           label: 'Temperature in °C',
           fill: false,
-          data: this.publicDataSvc.WaterTempSensorValues,
+          data: this.publicDataSvc.activePage.sensors.watertemp.history.map(value => value.value) || [],
           backgroundColor: [
             'rgba(76, 175, 80, 1)'
           ],

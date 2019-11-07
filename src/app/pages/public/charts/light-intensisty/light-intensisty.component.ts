@@ -25,11 +25,14 @@ export class LightIntensistyComponent implements OnInit {
     this.chart = new Chart(this.context, {
       type: 'line',
       data: {
-        labels: this.publicDataSvc.LightSensorTimes,
+        labels: this.publicDataSvc.activePage.sensors.lightstr.history.map(time => {
+          let formatted = new Date(time.timestamp).getHours() + ':' + new Date(time.timestamp).getMinutes().toString();
+          return formatted;
+        }) || [],
         datasets: [{
           label: 'Intensity in %',
           fill: false,
-          data: this.publicDataSvc.LightSensorValues,
+          data: this.publicDataSvc.activePage.sensors.lightstr.history.map(value => value.value) || [],
           backgroundColor: [
             'rgba(76, 175, 80, 1)'
           ],

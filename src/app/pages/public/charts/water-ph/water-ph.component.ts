@@ -22,17 +22,17 @@ export class WaterPhComponent implements OnInit {
   }
 
   createPhChart() {
-    console.log('Creating ph chart');
-    console.log(this.publicDataSvc.WaterPhSensorTimes);
-    console.log(this.publicDataSvc.WaterPhSensorValues);
     this.chart = new Chart(this.context, {
       type: 'line',
       data: {
-        labels: this.publicDataSvc.WaterPhSensorTimes,
+        labels: this.publicDataSvc.activePage.sensors.waterph.history.map(time => {
+          let formatted = new Date(time.timestamp).getHours() + ':' + new Date(time.timestamp).getMinutes().toString();
+          return formatted;
+        }) || [],
         datasets: [{
           label: 'Acidic <-> Neutral <-> Alkaline',
           fill: false,
-          data: this.publicDataSvc.WaterPhSensorValues,
+          data: this.publicDataSvc.activePage.sensors.waterph.history.map(value => value.value) || [],
           backgroundColor: [
             'rgba(76, 175, 80, 1)'
           ],
