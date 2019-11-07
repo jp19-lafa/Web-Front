@@ -1,0 +1,21 @@
+.footer {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  bottom: 0;
+  background: #C4C4C4;
+
+  p {
+    font-size: 18px;
+    color: white;
+  }
+
+  .middle {
+    text-align: center;
+  }
+
+  .right {
+    text-align: right;
+    padding: 0 2rem 0 0;
+  }
+}
