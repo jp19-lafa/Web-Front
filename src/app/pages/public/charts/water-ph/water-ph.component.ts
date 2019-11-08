@@ -28,7 +28,7 @@ export class WaterPhComponent implements OnInit {
         labels: this.publicDataSvc.activePage.sensors.waterph.history.map(time => {
           let formatted = new Date(time.timestamp).getHours() + ':' + new Date(time.timestamp).getMinutes().toString();
           return formatted;
-        }) || [],
+        }).reverse() || [],
         datasets: [{
           label: 'Acidic <-> Neutral <-> Alkaline',
           fill: false,

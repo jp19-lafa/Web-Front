@@ -28,7 +28,7 @@ export class WaterTemperatureComponent implements OnInit {
         labels: this.publicDataSvc.activePage.sensors.watertemp.history.map(time => {
           let formatted = new Date(time.timestamp).getHours() + ':' + new Date(time.timestamp).getMinutes().toString();
           return formatted;
-        }) || [],
+        }).reverse() || [],
         datasets: [{
           label: 'Temperature in °C',
           fill: false,
