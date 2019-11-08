@@ -31,7 +31,7 @@ export class AirTemperatureComponent implements OnInit {
         labels: this.publicDataSvc.activePage.sensors.airtemp.history.map(time => {
           let formatted = new Date(time.timestamp).getHours() + ':' + new Date(time.timestamp).getMinutes().toString();
           return formatted;
-        }) || [],
+        }).reverse() || [],
         datasets: [{
           label: 'Temperature in °C',
           fill: false,

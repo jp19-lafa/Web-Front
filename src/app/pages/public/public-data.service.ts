@@ -10,7 +10,7 @@ export class PublicDataService {
   publicNodes: PublicNode[];
   ActiveNodeData: PublicNode;
   IdOfClickedFarm: string;
-  apiLink = 'https://api.farmlab.team/nodes/public?limit=10';
+  apiLink = 'https://api.farmlab.team/nodes/public?limit=20';
 
   constructor(private http: HttpClient) { }
 
