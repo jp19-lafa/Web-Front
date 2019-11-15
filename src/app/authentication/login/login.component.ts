@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
-    private router: Router) { }
+    private router: Router,
+    private oAuthService: OAuthService
+  ) { }
 
   loginForm: FormGroup;
 
@@ -37,6 +40,6 @@ export class LoginComponent implements OnInit {
     }
   }
   msLogin() {
-
+    this.oAuthService.tryLogin();
   }
 }

@@ -12,14 +12,12 @@ import { AppRoutingModule } from './app-routing.module';
 //// Components ////
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './global/navigation/navigation.component';
-import { LoginComponent } from './authentication/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    LoginComponent,
     HomeComponent
   ],
   imports: [
