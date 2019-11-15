@@ -18,12 +18,12 @@ import { AuthenticationService } from './authentication.service';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
   ],
   imports: [
     CommonModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class AuthenticationModule { }

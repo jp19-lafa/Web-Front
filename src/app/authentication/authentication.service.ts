@@ -5,6 +5,7 @@ import { catchError, mapTo, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Tokens } from './token.model';
 import { Router } from '@angular/router';
+import * as Msal from 'msal/dist/msal';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,32 @@ export class AuthenticationService {
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private userLoginStateObserver: Observer<boolean>;
   public userLoginState: Observable<boolean>;
+  myMSALObj: any;
+
+  private msalConfig = {
+    auth: {
+      clientId: '70da46a1-aa1c-4c23-86d5-15a047c09909',
+      authority: 'https://login.microsoftonline.com/33d8cf3c-2f14-48c0-9ad6-5d2825533673',
+      redirectURI: "http://localhost:4200/",
+      graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
+      graphScopes: ["30998aad-bc60-41d4-a602-7d4c14d95624/user_impersonation"],
+
+    },
+    cache: {
+      cacheLocation: "localStorage",
+      storeAuthStateInCookie: true
+    }
+  };
 
   constructor(private http: HttpClient, private router: Router) {
     this.userLoginState = new Observable<boolean>((observer) => {
       this.userLoginStateObserver = observer;
     });
   }
+
+  //#region Microsoft login
+
+  //#endregion
 
   login(user: { email: string, password: string }): Observable<any> {
     return this.http.post<any>(`${environment.api}/auth/login`, user)
