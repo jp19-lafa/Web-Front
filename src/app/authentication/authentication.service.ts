@@ -48,8 +48,9 @@ export class AuthenticationService {
   }
 
   mslogin() {
-    this.msal.loginPopup(this.scopes).then(req => {
-      console.log('request', req);
+    this.msal.loginPopup(this.scopes).then(res => {
+      console.log('request', res);
+      // 
     });
   }
   //#endregion
