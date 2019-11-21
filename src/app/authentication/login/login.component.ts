@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
     private router: Router,
-    private oAuthService: OAuthService
   ) { }
 
   loginForm: FormGroup;
@@ -38,8 +37,5 @@ export class LoginComponent implements OnInit {
         console.error('LoginComponent_onSubmit', error);
       })
     }
-  }
-  msLogin() {
-    this.oAuthService.tryLogin();
   }
 }

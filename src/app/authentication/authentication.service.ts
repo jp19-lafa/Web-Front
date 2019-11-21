@@ -5,7 +5,6 @@ import { catchError, mapTo, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Tokens } from './token.model';
 import { Router } from '@angular/router';
-import { AuthConfig, OAuthService, JwksValidationHandler, OAuthLogger } from 'angular-oauth2-oidc';
 
 @Injectable({
   providedIn: 'root'
@@ -17,26 +16,14 @@ export class AuthenticationService {
   private userLoginStateObserver: Observer<boolean>;
   public userLoginState: Observable<boolean>;
 
-  private auth2Config: AuthConfig = {
-    issuer: 'https://login.microsoftonline.com/33d8cf3c-2f14-48c0-9ad6-5d2825533673/v2.0',
-    clientId: '70da46a1-aa1c-4c23-86d5-15a047c09909',
-    redirectUri: 'http://localhost:4200',
-    scope: 'openid profile email'
-  }
-
-  constructor(private http: HttpClient, private router: Router, private oAuthService: OAuthService, private oAuthLogger: OAuthLogger) {
+  constructor(private http: HttpClient, private router: Router) {
     this.userLoginState = new Observable<boolean>((observer) => {
       this.userLoginStateObserver = observer;
     });
-    this.configureOauth2();
   }
 
   //#region Microsoft login
-  configureOauth2() {
-    this.oAuthService.configure(this.auth2Config);
-    this.oAuthService.tokenValidationHandler = new JwksValidationHandler();
-    this.oAuthService.loadDiscoveryDocumentAndLogin();
-  }
+
   //#endregion
 
   login(user: { email: string, password: string }): Observable<any> {

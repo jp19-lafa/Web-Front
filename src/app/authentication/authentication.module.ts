@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { OAuthModule, OAuthService, UrlHelperService, OAuthLogger } from 'angular-oauth2-oidc';
 
 
 //// Interceptors ////
@@ -19,8 +18,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
   ],
   providers: [
-    OAuthService,
-    UrlHelperService,
     AuthenticationService,
     {
       provide: HTTP_INTERCEPTORS,
@@ -32,12 +29,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     HttpClientModule,
-    OAuthModule.forRoot({
-      resourceServer: {
-        allowedUrls: ['http://localhost:4200/'],
-        sendAccessToken: true
-      }
-    }),
     ReactiveFormsModule,
   ]
 })
