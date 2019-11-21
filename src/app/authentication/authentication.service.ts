@@ -50,7 +50,12 @@ export class AuthenticationService {
   mslogin() {
     this.msal.loginPopup(this.scopes).then(res => {
       console.log('request', res);
-      // 
+      this.acquireTokenAndAuthenticateAPI();
+    });
+  }
+  acquireTokenAndAuthenticateAPI() {
+    this.msal.acquireTokenSilent(this.scopes).then((tokenRes) => {
+      console.log('tokenresponse', tokenRes);
     });
   }
   //#endregion
