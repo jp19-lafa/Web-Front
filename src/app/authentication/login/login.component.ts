@@ -38,4 +38,9 @@ export class LoginComponent implements OnInit {
       })
     }
   }
+  //#region Microsoft login
+  msLogin() {
+    this.authService.mslogin();
+  }
+  //#endregion
 }
