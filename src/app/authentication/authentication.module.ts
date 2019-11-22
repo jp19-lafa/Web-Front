@@ -12,12 +12,16 @@ import { TokenInterceptor } from './token.interceptor';
 import { AuthenticationService } from './authentication.service';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { MicrosoftLoginService } from './microsoft-login.service';
 
 @NgModule({
   declarations: [
     LoginComponent,
+    AuthenticationComponent,
   ],
   providers: [
+    MicrosoftLoginService,
     AuthenticationService,
     {
       provide: HTTP_INTERCEPTORS,

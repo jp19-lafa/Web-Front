@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { MicrosoftLoginService } from '../microsoft-login.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
+    private microsoftLoginService: MicrosoftLoginService,
     private router: Router,
   ) { }
 
@@ -38,9 +40,8 @@ export class LoginComponent implements OnInit {
       })
     }
   }
-  //#region Microsoft login
+
   msLogin() {
-    this.authService.mslogin();
+    this.microsoftLoginService.mslogin();
   }
-  //#endregion
 }
