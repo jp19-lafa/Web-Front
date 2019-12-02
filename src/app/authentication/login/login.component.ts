@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
-import { OAuthService } from 'angular-oauth2-oidc';
 import { MicrosoftLoginService } from '../microsoft-login.service';
 
 @Component({
