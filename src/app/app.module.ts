@@ -14,13 +14,17 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './global/navigation/navigation.component';
 import { HomeComponent } from './pages/home/home.component';
 import { OverviewComponent } from './pages/overview/overview.component';
+import { NodeListItemComponent } from './pages/overview/node-list-item/node-list-item.component';
+import { ControllerComponent } from './pages/overview/controller/controller.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     HomeComponent,
-    OverviewComponent
+    OverviewComponent,
+    NodeListItemComponent,
+    ControllerComponent
   ],
   imports: [
     BrowserModule,

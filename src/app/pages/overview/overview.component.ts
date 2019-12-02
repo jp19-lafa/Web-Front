@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import * as Chart from 'chart.js';
+import { NodeDataService } from 'src/app/node-data.service';
+import { Node } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-overview',
@@ -7,12 +9,15 @@ import * as Chart from 'chart.js';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
-  nodes = ['Development node 1', 'Development node 2', 'Development node 3', 'Development node 4'];
+  nodes: Node[] = [];
   clickedNode: String;
   @ViewChild('chartCanvas', { static: false }) chartCanvas: ElementRef;
   context: CanvasRenderingContext2D;
   chart;
-  constructor() { }
+
+  constructor(private nodeDataSvc: NodeDataService) {
+    this.getNodes();
+  }
 
   ngOnInit() {
   }
@@ -21,9 +26,15 @@ export class OverviewComponent implements OnInit {
     this.context = this.chartCanvas.nativeElement.getContext('2d');
     this.createChart();
   }
-  selectNode(event) {
-    this.clickedNode = event.target.innerText;
-    console.log('clicked', this.clickedNode);
+
+  getNodes() {
+    this.nodeDataSvc.getNodes().subscribe((nodes) => {
+      this.nodes = nodes;
+    });
+  }
+  selectNode(node) {
+    console.log('clicked', node);
+    this.clickedNode = node.label
   }
 
   createChart() {

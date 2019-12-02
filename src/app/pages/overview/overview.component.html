@@ -1,14 +1,6 @@
 <div class="overviewPage">
   <div class="nodeList">
-    <div class="node" *ngFor="let node of nodes" (click)='selectNode($event)'>
-      <div class="status">
-        <div class="upperCircle"></div>
-        <div class="lowerCircle"></div>
-      </div>
-      <div class="nodeName">
-        <p>{{node}}</p>
-      </div>
-    </div>
+    <app-node-list-item [node]="node" *ngFor="let node of nodes" (click)="selectNode(node)"></app-node-list-item>
   </div>
   <div class="view">
     <div class="title">
@@ -18,18 +10,7 @@
       <canvas #chartCanvas></canvas>
     </div>
     <div class="controller">
-      <div class="control">
-        <p>Light Intensity</p>
-        <input type="range" min="1" max="100" value="50" class="slider" id="lightIntensity">
-      </div>
-      <div class="control">
-        <p>Water Flow</p>
-        <input type="range" min="1" max="100" value="20" class="slider" id="waterFlow">
-      </div>
-      <div class="control">
-        <p>Nutritient</p>
-        <input type="range" min="0" max="100" value="50" class="slider" id="nutritient">
-      </div>
+      <app-controller></app-controller>
       <div class="control">
         <p>Water Temperature</p>
         <p>30 degrees</p>
