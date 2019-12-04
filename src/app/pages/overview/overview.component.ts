@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2, Input } from '@angular/core';
 import * as Chart from 'chart.js';
 import { NodeDataService } from 'src/app/node-data.service';
-import { Node } from 'src/app/interfaces';
+import { Node, Sensor } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-overview',
@@ -9,11 +9,14 @@ import { Node } from 'src/app/interfaces';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
+  controllers: string[] = ['Light Intensity', 'Waterflow', 'Nutritient Flow'];
+  sensortypes: string[] = ['Air Temperature', 'Water Temperature', 'Relative Humidity'];
   nodes: Node[] = [];
   clickedNode: String;
   @ViewChild('chartCanvas', { static: false }) chartCanvas: ElementRef;
   context: CanvasRenderingContext2D;
   chart;
+  sensorData: Sensor[];
 
   constructor(private nodeDataSvc: NodeDataService) {
     this.getNodes();
@@ -35,6 +38,8 @@ export class OverviewComponent implements OnInit {
   selectNode(node) {
     console.log('clicked', node);
     this.clickedNode = node.label
+    this.sensorData = node.sensors;
+    console.log(this.sensorData);
   }
 
   createChart() {

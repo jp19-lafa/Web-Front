@@ -10,19 +10,8 @@
       <canvas #chartCanvas></canvas>
     </div>
     <div class="controller">
-      <app-controller></app-controller>
-      <div class="control">
-        <p>Water Temperature</p>
-        <p>30 degrees</p>
-      </div>
-      <div class="control">
-        <p>Relative Humidity</p>
-        <p>10 degrees</p>
-      </div>
-      <div class="control">
-        <p>Ph scale</p>
-        <p> 6</p>
-      </div>
+      <app-controller *ngFor="let control of controllers" [type]="control"></app-controller>
+      <app-value-card *ngFor="let type of sensortypes" [type]="type"></app-value-card>
     </div>
   </div>
 </div>

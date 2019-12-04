@@ -32,3 +32,15 @@
     }
   }
 }
+@media only screen and (max-width: 1170px) {
+  .controller {
+    display: grid;
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media only screen and (max-width: 815px) {
+  .controller {
+    display: grid;
+    grid-template-columns: 1fr !important;
+  }
+}

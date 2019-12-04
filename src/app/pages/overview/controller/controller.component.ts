@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NodeDataService } from 'src/app/node-data.service';
 
 @Component({
@@ -7,8 +7,9 @@ import { NodeDataService } from 'src/app/node-data.service';
   styleUrls: ['./controller.component.scss']
 })
 export class ControllerComponent implements OnInit {
-  type: string;
-  constructor(private nodeDataSvc: NodeDataService) { }
+  @Input() type: string;
+  constructor(private nodeDataSvc: NodeDataService) {
+  }
 
   ngOnInit() {
   }

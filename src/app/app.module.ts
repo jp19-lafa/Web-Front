@@ -16,6 +16,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { NodeListItemComponent } from './pages/overview/node-list-item/node-list-item.component';
 import { ControllerComponent } from './pages/overview/controller/controller.component';
+import { ValueCardComponent } from './pages/overview/value-card/value-card.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ControllerComponent } from './pages/overview/controller/controller.comp
     HomeComponent,
     OverviewComponent,
     NodeListItemComponent,
-    ControllerComponent
+    ControllerComponent,
+    ValueCardComponent
   ],
   imports: [
     BrowserModule,
