@@ -7,7 +7,6 @@ import { environment } from '../environments/environment'
   providedIn: 'root'
 })
 export class NodeDataService {
-  lightIntensityValue: number;
 
   constructor(private http: HttpClient) { }
 
