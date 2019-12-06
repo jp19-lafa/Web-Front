@@ -17,6 +17,7 @@ export class OverviewComponent implements OnInit {
   context: CanvasRenderingContext2D;
   chart;
   sensorData: Sensor[];
+  dataLimit = 5;
 
   constructor(private nodeDataSvc: NodeDataService) {
     this.getNodes();
@@ -39,7 +40,18 @@ export class OverviewComponent implements OnInit {
     console.log('clicked', node);
     this.clickedNode = node.label
     this.sensorData = node.sensors;
-    console.log(this.sensorData);
+    console.log('sensordata: ', this.sensorData);
+    this.limitSensorDataInput();
+    this.createChart
+  }
+  limitSensorDataInput() {
+    if (this.nodeDataSvc.airTempData.length >= this.dataLimit) {
+      this.nodeDataSvc.airTempData.pop();
+      console.log(this.nodeDataSvc.airTempData);
+    } else {
+      this.nodeDataSvc.airTempData.unshift(this.sensorData[0].value);
+      console.log(this.nodeDataSvc.airTempData);
+    }
   }
 
   createChart() {
@@ -50,7 +62,7 @@ export class OverviewComponent implements OnInit {
         datasets: [{
           label: 'Temperature in °C',
           fill: false,
-          data: ['5', '10', '20', '30', '40', '30', '0'],
+          data: this.nodeDataSvc.airTempData,
           backgroundColor: [
             'rgba(76, 175, 80, 1)'
           ],

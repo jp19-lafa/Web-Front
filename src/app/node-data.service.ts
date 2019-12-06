@@ -8,6 +8,7 @@ import { environment } from '../environments/environment'
 })
 export class NodeDataService {
   lightIntensityValue: number;
+  airTempData: number[] = [];
 
   constructor(private http: HttpClient) { }
 
