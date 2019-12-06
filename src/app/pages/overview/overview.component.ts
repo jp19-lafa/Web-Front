@@ -1,22 +1,21 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import * as Chart from 'chart.js';
 import { NodeDataService } from 'src/app/node-data.service';
-import { Node, Sensor } from 'src/app/interfaces';
+import { Node } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.scss']
 })
-export class OverviewComponent implements OnInit {
+export class OverviewComponent implements OnInit, AfterViewInit {
   controllers: string[] = ['Light Intensity', 'Waterflow', 'Nutritient Flow'];
   sensortypes: string[] = ['Air Temperature', 'Water Temperature', 'Relative Humidity'];
   nodes: Node[] = [];
-  clickedNode: String;
+  clickedNode: string;
   @ViewChild('chartCanvas', { static: false }) chartCanvas: ElementRef;
   context: CanvasRenderingContext2D;
-  chart;
-  sensorData: Sensor[];
+  chart: Chart;
   dataLimit = 5;
 
   constructor(private nodeDataSvc: NodeDataService) {
@@ -32,26 +31,13 @@ export class OverviewComponent implements OnInit {
   }
 
   getNodes() {
-    this.nodeDataSvc.getNodes().subscribe((nodes) => {
+    this.nodeDataSvc.getAllMyNodes().then((nodes) => {
       this.nodes = nodes;
     });
   }
   selectNode(node) {
     console.log('clicked', node);
-    this.clickedNode = node.label
-    this.sensorData = node.sensors;
-    console.log('sensordata: ', this.sensorData);
-    this.limitSensorDataInput();
-    this.createChart
-  }
-  limitSensorDataInput() {
-    if (this.nodeDataSvc.airTempData.length >= this.dataLimit) {
-      this.nodeDataSvc.airTempData.pop();
-      console.log(this.nodeDataSvc.airTempData);
-    } else {
-      this.nodeDataSvc.airTempData.unshift(this.sensorData[0].value);
-      console.log(this.nodeDataSvc.airTempData);
-    }
+    this.clickedNode = node.label;
   }
 
   createChart() {
@@ -62,7 +48,7 @@ export class OverviewComponent implements OnInit {
         datasets: [{
           label: 'Temperature in °C',
           fill: false,
-          data: this.nodeDataSvc.airTempData,
+          data: [12, 53, 23, 13],
           backgroundColor: [
             'rgba(76, 175, 80, 1)'
           ],

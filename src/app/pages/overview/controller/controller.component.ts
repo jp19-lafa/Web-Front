@@ -15,7 +15,6 @@ export class ControllerComponent implements OnInit {
   }
 
   updateValue(event) {
-    this.nodeDataSvc.lightIntensityValue = event.target.value;
     console.log('Light updatet to ' + event.target.value);
   }
 
