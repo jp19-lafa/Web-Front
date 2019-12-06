@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         email: form.value.email,
         password: form.value.password
       }).subscribe(success => {
-        this.router.navigate(['home']);
+        this.router.navigate(['/overview']);
       }, error => {
         console.error('LoginComponent_onSubmit', error);
       })

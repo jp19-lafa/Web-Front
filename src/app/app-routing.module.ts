@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'authentication', component: AuthenticationComponent },
   { path: 'overview', component: OverviewComponent },
+  { path: '', component: LoginComponent }
 ];
 
 @NgModule({
