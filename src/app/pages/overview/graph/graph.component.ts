@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import * as Chart from 'chart.js';
 import { NodeDataService } from 'src/app/node-data.service';
-import { Node } from '../../..//interfaces';
+import { Node, SensorDataPoint } from '../../..//interfaces';
 
 @Component({
   selector: 'app-graph',
@@ -33,7 +33,14 @@ export class GraphComponent implements OnInit, AfterViewInit {
     this.nodeDataSvc.getSpecificNode(this.nodeInfo._id).then(clickedNode => {
       console.log('specific node', clickedNode);
       this.graphName = this.nodeInfo.sensors[0].type;
-      console.log(this.graphName);
+      this.getDataPoints();
+    });
+  }
+  getDataPoints() {
+    this.nodeDataSvc.getSensorDataPoints(this.nodeInfo.sensors[0]._id).then(dataPoints => {
+      console.log('datapoints', dataPoints.data.map(point => point.value).reverse());
+      this.graphData = dataPoints.data.map(point => point.value).reverse();
+      this.graphTimes = dataPoints.data.map(point => point.timestamp = new Date()).reverse();
       this.createChart();
     });
   }
