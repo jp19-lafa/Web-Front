@@ -29,7 +29,7 @@ export class NodeDataService {
    * Get all datapoints from a specific sensor
    * @param id The Sensor ID
    */
-  getSensorDataPoints(id: string): Promise<SensorDataPoint[]> {
-    return this.http.get<SensorDataPoint[]>(`${environment.api}/sensors/${id}`).toPromise();
+  getSensorDataPoints(id: string): Promise<{ data: SensorDataPoint[] }> {
+    return this.http.get<{ data: SensorDataPoint[] }>(`${environment.api}/sensors/${id}`).toPromise();
   }
 }

@@ -17,6 +17,7 @@ import { OverviewComponent } from './pages/overview/overview.component';
 import { NodeListItemComponent } from './pages/overview/node-list-item/node-list-item.component';
 import { ControllerComponent } from './pages/overview/controller/controller.component';
 import { ValueCardComponent } from './pages/overview/value-card/value-card.component';
+import { GraphComponent } from './pages/overview/graph/graph.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ValueCardComponent } from './pages/overview/value-card/value-card.compo
     OverviewComponent,
     NodeListItemComponent,
     ControllerComponent,
-    ValueCardComponent
+    ValueCardComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,

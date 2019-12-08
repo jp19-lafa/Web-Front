@@ -4,11 +4,9 @@
   </div>
   <div class="view">
     <div class="title">
-      <p>{{clickedNode}}</p>
+      <p>{{clickedNode.label}}</p>
     </div>
-    <div class="charts">
-      <canvas #chartCanvas></canvas>
-    </div>
+    <app-graph [nodeInfo]=clickedNode></app-graph>
     <div class="controller">
       <app-controller *ngFor="let control of controllers" [type]="control"></app-controller>
       <app-value-card *ngFor="let type of sensortypes" [type]="type"></app-value-card>
