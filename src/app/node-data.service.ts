@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Node, SensorDataPoint } from './interfaces';
+import { Node, SensorDataPoint, Actuator } from './interfaces';
 import { environment } from '../environments/environment'
 
 @Injectable({
@@ -31,5 +31,9 @@ export class NodeDataService {
    */
   getSensorDataPoints(id: string): Promise<{ data: SensorDataPoint[] }> {
     return this.http.get<{ data: SensorDataPoint[] }>(`${environment.api}/sensors/${id}`).toPromise();
+  }
+
+  patchActuator(id: string, value: number): Promise<{ data: Actuator }> {
+    return this.http.patch<{ data: Actuator }>(`${environment.api}/actuators/${id}`, { value }).toPromise();
   }
 }
