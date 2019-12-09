@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import * as Chart from 'chart.js';
 import { NodeDataService } from 'src/app/node-data.service';
-import { Node, SensorDataPoint } from '../../..//interfaces';
+import { Node } from '../../..//interfaces';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-graph',
@@ -14,7 +15,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
   context: CanvasRenderingContext2D;
   chart: Chart;
   graphData: number[];
-  graphTimes: Date[];
+  graphTimes: string[];
   graphName: string;
 
   constructor(private nodeDataSvc: NodeDataService) {
@@ -38,9 +39,8 @@ export class GraphComponent implements OnInit, AfterViewInit {
   }
   getDataPoints() {
     this.nodeDataSvc.getSensorDataPoints(this.nodeInfo.sensors[0]._id).then(dataPoints => {
-      console.log('datapoints', dataPoints.data.map(point => point.value).reverse());
       this.graphData = dataPoints.data.map(point => point.value).reverse();
-      this.graphTimes = dataPoints.data.map(point => point.timestamp = new Date()).reverse();
+      this.graphTimes = dataPoints.data.map(point => point.timestamp = moment(new Date()).format('MMMM Do YYYY, h:mm:ss a')).reverse();
       this.createChart();
     });
   }
