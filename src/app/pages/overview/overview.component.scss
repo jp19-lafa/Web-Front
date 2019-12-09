@@ -8,10 +8,21 @@
     background: rgb(240, 240, 240);
     padding: 0.5rem 1rem;
   }
+  .noNodeSelected {
+    background: rgb(255, 255, 255);
+    height: calc(100vh- 72px);
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    p {
+      padding: 20%;
+      color: rgb(189, 187, 187);
+    }
+  }
   .view {
     height: calc(100vh- 72px);
     width: 100%;
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 1rem;
     .title {
       width: 100%;

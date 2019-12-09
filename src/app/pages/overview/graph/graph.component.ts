@@ -32,7 +32,6 @@ export class GraphComponent implements OnInit, AfterViewInit {
 
   getSpecificNode() {
     this.nodeDataSvc.getSpecificNode(this.nodeInfo._id).then(clickedNode => {
-      console.log('specific node', clickedNode);
       this.graphName = this.nodeInfo.sensors[0].type;
       this.getDataPoints();
     });
