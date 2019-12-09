@@ -13,7 +13,7 @@
     </div>
     <app-graph [nodeInfo]=activeNode></app-graph>
     <div class="controller">
-      <app-controller *ngFor="let control of controllers" [type]="control"></app-controller>
+      <app-controller *ngFor="let actuator of activeNode.actuators" [actuator]="actuator"></app-controller>
       <app-value-card *ngFor="let sensor of activeNode.sensors" [sensor]="sensor"></app-value-card>
     </div>
   </div>

@@ -31,5 +31,6 @@ export class OverviewComponent implements OnInit {
 
   selectNode(node) {
     this.activeNode = node;
+
   }
 }

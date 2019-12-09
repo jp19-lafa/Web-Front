@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NodeDataService } from 'src/app/node-data.service';
+import { Actuator } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-controller',
@@ -7,15 +8,19 @@ import { NodeDataService } from 'src/app/node-data.service';
   styleUrls: ['./controller.component.scss']
 })
 export class ControllerComponent implements OnInit {
-  @Input() type: string;
+  @Input() actuator: Actuator;
   constructor(private nodeDataSvc: NodeDataService) {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   updateValue(event) {
-    console.log('Light updatet to ' + event.target.value);
+    this.nodeDataSvc.patchActuator(this.actuator._id, this.map(event.target.valueAsNumber));
   }
 
+  map(value: number): number {
+    const multiplier = 255 / 100;
+    value = value * multiplier;
+    return value;
+  }
 }
