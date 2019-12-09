@@ -33,3 +33,15 @@
     line-height: 7rem;
   }
 }
+@media only screen and (max-width: 815px) {
+  .node {
+    grid-template-columns: 1fr;
+    .status {
+      padding: 0rem 0rem 1rem 0rem !important;
+      margin-left: 1rem;
+    }
+  }
+  .nodeName {
+    display: none;
+  }
+}

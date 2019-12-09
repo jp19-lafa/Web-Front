@@ -1,3 +1,8 @@
+app-node-list-item.active {
+  display: block;
+  background: rgb(255, 255, 255);
+}
+
 .overviewPage {
   background: rgb(240, 240, 240);
   display: grid;
@@ -44,8 +49,14 @@
   }
 }
 @media only screen and (max-width: 815px) {
-  .controller {
-    display: grid;
-    grid-template-columns: 1fr !important;
+  .overviewPage {
+    grid-template-columns: 12% 87%;
+    .nodeList {
+      padding: 0;
+    }
+    .controller {
+      display: grid;
+      grid-template-columns: 1fr !important;
+    }
   }
 }

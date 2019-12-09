@@ -1,18 +1,20 @@
 <div class="overviewPage">
   <div class="nodeList">
-    <app-node-list-item [node]="node" *ngFor="let node of nodes" (click)="selectNode(node)"></app-node-list-item>
+    <app-node-list-item [node]="node" *ngFor="let node of nodes" [routerLink]="['/overview', node._id]"
+      routerLinkActive="active">
+    </app-node-list-item>
   </div>
-  <div class="noNodeSelected" *ngIf="clickedNode == null">
+  <div class="noNodeSelected" *ngIf="activeNode == null">
     <p>Select a farm</p>
   </div>
-  <div class="view" *ngIf="clickedNode != null">
+  <div class="view" *ngIf="activeNode != null">
     <div class="title">
-      <p>{{clickedNode.label}}</p>
+      <p>{{activeNode.label}}</p>
     </div>
-    <app-graph [nodeInfo]=clickedNode></app-graph>
+    <app-graph [nodeInfo]=activeNode></app-graph>
     <div class="controller">
       <app-controller *ngFor="let control of controllers" [type]="control"></app-controller>
-      <app-value-card *ngFor="let sensor of clickedNode.sensors" [sensor]="sensor"></app-value-card>
+      <app-value-card *ngFor="let sensor of activeNode.sensors" [sensor]="sensor"></app-value-card>
     </div>
   </div>
 </div>

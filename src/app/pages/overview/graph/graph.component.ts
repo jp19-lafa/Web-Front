@@ -39,7 +39,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
   getDataPoints() {
     this.nodeDataSvc.getSensorDataPoints(this.nodeInfo.sensors[0]._id).then(dataPoints => {
       this.graphData = dataPoints.data.map(point => point.value).reverse();
-      this.graphTimes = dataPoints.data.map(point => point.timestamp = moment(new Date()).format('MMMM Do YYYY, h:mm:ss a')).reverse();
+      this.graphTimes = dataPoints.data.map(point => point.timestamp = moment(new Date()).format('h:mm')).reverse();
       this.createChart();
     });
   }

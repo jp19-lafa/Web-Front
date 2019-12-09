@@ -8,11 +8,8 @@ import { Sensor } from 'src/app/interfaces';
 })
 export class ValueCardComponent implements OnInit {
   @Input() sensor: Sensor;
-  constructor() {
-    console.log(this.sensor);
-  }
+  constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

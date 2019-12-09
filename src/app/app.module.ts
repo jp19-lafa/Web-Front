@@ -12,7 +12,6 @@ import { AppRoutingModule } from './app-routing.module';
 //// Components ////
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './global/navigation/navigation.component';
-import { HomeComponent } from './pages/home/home.component';
 import { OverviewComponent } from './pages/overview/overview.component';
 import { NodeListItemComponent } from './pages/overview/node-list-item/node-list-item.component';
 import { ControllerComponent } from './pages/overview/controller/controller.component';
@@ -23,7 +22,6 @@ import { GraphComponent } from './pages/overview/graph/graph.component';
   declarations: [
     AppComponent,
     NavigationComponent,
-    HomeComponent,
     OverviewComponent,
     NodeListItemComponent,
     ControllerComponent,
