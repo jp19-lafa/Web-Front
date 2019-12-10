@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Node, SensorDataPoint, Actuator } from '../../interfaces';
+import { Node, SensorDataPoint, Actuator } from '../interfaces';
 import { environment } from '../../../environments/environment';
 
 @Injectable({

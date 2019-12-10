@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NodeDataService } from 'src/app/providers/API/node-data.service';
-import { Actuator } from 'src/app/interfaces';
+import { Actuator } from 'src/app/providers/interfaces';
 import { NotificationService, NotificationType } from 'src/app/providers/API/notification.service';
 
 @Component({

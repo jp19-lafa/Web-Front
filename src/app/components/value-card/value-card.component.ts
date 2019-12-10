@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Sensor } from 'src/app/interfaces';
+import { Sensor } from 'src/app/providers/interfaces';
 
 @Component({
   selector: 'app-value-card',

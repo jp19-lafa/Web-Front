@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import * as Chart from 'chart.js';
 import { NodeDataService } from 'src/app/providers/API/node-data.service';
-import { Node } from 'src/app/interfaces';
+import { Node } from 'src/app/providers/interfaces';
 import * as moment from 'moment';
 
 @Component({

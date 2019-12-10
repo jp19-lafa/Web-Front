@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { Node } from 'src/app/interfaces';
+import { Node } from 'src/app/providers/interfaces';
 import { faSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({

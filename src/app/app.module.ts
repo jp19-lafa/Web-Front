@@ -12,8 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 //// Components ////
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { NodeListItemComponent } from './pages/overview/node-list-item/node-list-item.component';
-import { ControllerComponent } from './pages/overview/controller/controller.component';
+import { NodeListItemComponent } from './components/node-list-item/node-list-item.component';
+import { ControllerComponent } from './components/controller/controller.component';
 import { ValueCardComponent } from './components/value-card/value-card.component';
 import { GraphComponent } from './components/graph/graph.component';
 import { PopUpComponent } from './components/pop-up/pop-up.component';
