@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthenticationModule } from './providers/authentication/authentication.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 //// Routing Module ////
@@ -11,13 +11,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 //// Components ////
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './global/navigation/navigation.component';
-import { OverviewComponent } from './pages/overview/overview.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
 import { NodeListItemComponent } from './pages/overview/node-list-item/node-list-item.component';
 import { ControllerComponent } from './pages/overview/controller/controller.component';
-import { ValueCardComponent } from './pages/overview/value-card/value-card.component';
-import { GraphComponent } from './pages/overview/graph/graph.component';
-import { PopUpComponent } from './pages/overview/pop-up/pop-up.component';
+import { ValueCardComponent } from './components/value-card/value-card.component';
+import { GraphComponent } from './components/graph/graph.component';
+import { PopUpComponent } from './components/pop-up/pop-up.component';
+
+//// Pages ////
+import { OverviewComponent } from './pages/overview/overview.component';
 
 @NgModule({
   declarations: [

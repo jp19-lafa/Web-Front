@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faBell } from '@fortawesome/free-regular-svg-icons';
-import { NotificationService, Notification } from 'src/app/notification.service';
+import { NotificationService, Notification } from 'src/app/providers/API/notification.service';
 
 
 @Component({

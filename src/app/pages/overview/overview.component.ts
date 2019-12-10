@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { NodeDataService } from 'src/app/node-data.service';
+import { NodeDataService } from 'src/app/providers/API/node-data.service';
 import { Node } from 'src/app/interfaces';
 import { ActivatedRoute } from '@angular/router';
 

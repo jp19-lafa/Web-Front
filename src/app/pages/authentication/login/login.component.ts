@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from '../authentication.service';
+import { AuthenticationService } from '../../../providers/authentication/authentication.service';
 import { Router } from '@angular/router';
-import { MicrosoftLoginService } from '../microsoft-login.service';
+import { MicrosoftLoginService } from '../../../providers/authentication/microsoft-login.service';
 
 @Component({
   selector: 'app-login',
