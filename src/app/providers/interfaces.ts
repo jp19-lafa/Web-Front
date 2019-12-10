@@ -32,3 +32,14 @@ export interface SensorDataPoint {
   value: number;
   timestamp: Date;
 }
+
+export enum IONames {
+  airtemp = 'Air Temperature',
+  watertemp = 'Water Temperature',
+  lightstr = 'Light Strength',
+  airhumidity = 'Air Humidity',
+  waterph = 'Water PH',
+  lightint = 'Light Intensity',
+  flowpump = 'Flow Rate',
+  foodpump = 'Nutrition Rate'
+}

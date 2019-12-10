@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Node } from 'src/app/providers/interfaces';
-import { faSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-node-list-item',
@@ -8,14 +7,11 @@ import { faSlash } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./node-list-item.component.scss']
 })
 export class NodeListItemComponent implements OnInit {
-  @Input('node') node: Node;
+  @Input() node: Node;
   @ViewChild('status', { static: false }) status: ElementRef;
   constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
-  }
-
-  ngAfterViewChecked(): void {
     this.setStatus();
   }
 

@@ -1,46 +1,55 @@
-app-node-list-item.active {
-  display: block;
+.subheader {
+  position: fixed;
+  top: 72px;
+  z-index: 66;
+  width: 100%;
+  height: 64px;
   background: rgb(255, 255, 255);
 }
 
-.overviewPage {
-  background: rgb(240, 240, 240);
-  display: grid;
-  grid-template-columns: 20% 80%;
-  .nodeList {
-    height: calc(100vh - 72px);
-    width: 100%;
-    background: rgb(240, 240, 240);
-    padding: 0.5rem 1rem;
+section {
+  position: fixed;
+  top: 136px;
+  z-index: 55;
+  width: 100%;
+}
+
+.nodes {
+  height: calc(100vh - 136px);
+  width: 100%;
+  background: rgba(85, 215, 122);
+  padding-top: 1.5rem;
+}
+
+.noNodeSelected {
+  background: rgb(255, 255, 255);
+  height: calc(100vh- 72px);
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  p {
+    padding: 20%;
+    color: rgb(189, 187, 187);
   }
-  .noNodeSelected {
-    background: rgb(255, 255, 255);
-    height: calc(100vh- 72px);
+}
+
+main {
+  overflow-y: auto;
+  padding-top: 2rem;
+  max-height: calc(100vh - 136px);
+}
+
+.view {
+  .title {
     width: 100%;
-    font-size: 40px;
     text-align: center;
-    p {
-      padding: 20%;
-      color: rgb(189, 187, 187);
-    }
+    padding: 1rem 1rem 2rem 1rem;
+    font-size: larger;
   }
-  .view {
-    scroll-behavior: smooth;
-    height: calc(100vh- 72px);
-    width: 100%;
-    background: rgb(255, 255, 255);
+  .controller {
     padding: 1rem;
-    .title {
-      width: 100%;
-      text-align: center;
-      padding: 1rem 1rem 2rem 1rem;
-      font-size: larger;
-    }
-    .controller {
-      padding: 1rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media only screen and (max-width: 1170px) {
