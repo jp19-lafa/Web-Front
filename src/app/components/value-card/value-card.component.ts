@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Sensor } from 'src/app/providers/interfaces';
+import { Component, Input, OnInit } from '@angular/core';
+import { Sensor, IONames } from 'src/app/providers/interfaces';
 
 @Component({
   selector: 'app-value-card',
@@ -7,9 +7,15 @@ import { Sensor } from 'src/app/providers/interfaces';
   styleUrls: ['./value-card.component.scss']
 })
 export class ValueCardComponent implements OnInit {
+
   @Input() sensor: Sensor;
+  sensorFullName: string;
+
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    // TODO Move to API Services
+    this.sensorFullName = IONames[this.sensor.type];
+  }
 
 }

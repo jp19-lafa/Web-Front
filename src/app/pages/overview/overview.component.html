@@ -8,21 +8,22 @@
       </app-node-list-item>
     </div>
     <main class="col-9">
-      <!-- <div class="noNodeSelected" *ngIf="activeNode == null">
+      <div class="noNodeSelected" *ngIf="!activeNode">
         <p>Select a farm</p>
-      </div> -->
-      <div class="view" *ngIf="activeNode != null">
-        <div class="title">
-          <h2>{{activeNode.label}}</h2>
+      </div>
+      <div class="view row" *ngIf="activeNode">
+        <div class="title col-12">
+          <h1>{{activeNode.label}}</h1>
         </div>
-        <app-graph [nodeInfo]=activeNode></app-graph>
-        <div class="controller">
-          <app-controller *ngFor="let actuator of activeNode.actuators" [actuator]="actuator"></app-controller>
-          <app-value-card *ngFor="let sensor of activeNode.sensors" [sensor]="sensor"></app-value-card>
+        <app-graph [nodeInfo]="activeNode" class="col-12"></app-graph>
+        <div class="controller" class="col-12">
+          <div class="row">
+            <app-controller class="col-4" *ngFor="let actuator of activeNode.actuators" [actuator]="actuator">
+            </app-controller>
+            <app-value-card class="col-4" *ngFor="let sensor of activeNode.sensors" [sensor]="sensor"></app-value-card>
+          </div>
         </div>
       </div>
     </main>
   </section>
 </div>
-<!-- <div class="overviewPage">
-</div> -->

@@ -9,11 +9,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
-  controllers: string[] = ['Light Intensity', 'Waterflow', 'Nutritient Flow'];
+
   nodes: Node[] = [];
   activeNode: Node;
 
-  constructor(private nodeDataSvc: NodeDataService, private route: ActivatedRoute) {
+  constructor(
+    private nodeDataSvc: NodeDataService,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -31,6 +33,5 @@ export class OverviewComponent implements OnInit {
 
   selectNode(node) {
     this.activeNode = node;
-
   }
 }
