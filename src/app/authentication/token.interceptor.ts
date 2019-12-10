@@ -15,27 +15,27 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     if (this.authService.getJwtToken()) {
-      request = this.addToken(request, this.authService.getJwtToken());
+      request = this.addToken(request);
     }
 
     return next.handle(request).pipe(catchError(error => {
-      if (error instanceof HttpErrorResponse && error.status === 401) {
-        return this.handle401Error(request, next);
+      if (error instanceof HttpErrorResponse && error.status === 498) {
+        return this.handle498Error(request, next);
       } else {
         return throwError(error);
       }
     }));
   }
 
-  private addToken(request: HttpRequest<any>, token: string) {
+  private addToken(request: HttpRequest<any>) {
     return request.clone({
       setHeaders: {
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${this.authService.getJwtToken()}`
       }
     });
   }
 
-  private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
+  private handle498Error(request: HttpRequest<any>, next: HttpHandler) {
 
     if (!this.isRefreshing) {
       this.isRefreshing = true;
@@ -45,7 +45,7 @@ export class TokenInterceptor implements HttpInterceptor {
         switchMap((token: any) => {
           this.isRefreshing = false;
           this.refreshTokenSubject.next(token.jwt);
-          return next.handle(this.addToken(request, token.jwt));
+          return next.handle(this.addToken(request));
         }));
 
     } else {
@@ -53,7 +53,7 @@ export class TokenInterceptor implements HttpInterceptor {
         filter(token => token != null),
         take(1),
         switchMap(jwt => {
-          return next.handle(this.addToken(request, jwt));
+          return next.handle(this.addToken(request));
         }));
     }
   }

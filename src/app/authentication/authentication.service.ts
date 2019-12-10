@@ -44,7 +44,7 @@ export class AuthenticationService {
 
   refreshToken() {
     return this.http.post<any>(`${environment.api}/auth/refresh`, {
-      'refreshToken': this.getRefreshToken()
+      refresh: this.getRefreshToken()
     }).pipe(
       tap((tokens) => this.storeTokens(tokens)),
       mapTo(true),
