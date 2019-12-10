@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NodeDataService } from 'src/app/node-data.service';
 import { Actuator } from 'src/app/interfaces';
+import { NotificationService, NotificationType } from 'src/app/notification.service';
 
 @Component({
   selector: 'app-controller',
@@ -9,13 +10,18 @@ import { Actuator } from 'src/app/interfaces';
 })
 export class ControllerComponent implements OnInit {
   @Input() actuator: Actuator;
-  constructor(private nodeDataSvc: NodeDataService) {
+  constructor(private nodeDataSvc: NodeDataService, private notificationSvc: NotificationService) {
   }
 
   ngOnInit() { }
 
   updateValue(event) {
-    this.nodeDataSvc.patchActuator(this.actuator._id, this.map(event.target.valueAsNumber));
+    const value = this.map(event.target.valueAsNumber);
+    this.nodeDataSvc.patchActuator(this.actuator._id, value);
+    this.notificationSvc.notification.next({
+      message: `Value update to ${value}`,
+      type: NotificationType.success
+    });
   }
 
   map(value: number): number {
