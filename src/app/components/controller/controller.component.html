@@ -1,4 +1,4 @@
 <div class="control">
   <p>{{ actuatorFullName }}</p>
-  <input type="range" min="1" max="100" [value]="actuator.value" class="slider" (blur)="updateValue(slider.value)" #slider>
+  <input type="range" min="0" max="100" [value]="actuator.value" class="slider" (blur)="updateValue(slider.value)" #slider>
 </div>
