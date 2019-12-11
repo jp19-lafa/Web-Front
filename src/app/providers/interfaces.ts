@@ -70,7 +70,7 @@ export interface LineGraphConfig {
     io: IODeviceType;
     color: string;
    }[];
-  ticks?: {
+  ticks: {
     beginAtZero: boolean;
     suggestedMin: number;
     suggestedMax: number;

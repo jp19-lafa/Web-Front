@@ -74,9 +74,9 @@ export class GraphComponent implements OnInit, AfterViewInit {
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero: true,
-              suggestedMin: -10,
-              suggestedMax: 40,
+              beginAtZero: this.config.ticks.beginAtZero || true,
+              suggestedMin: this.config.ticks.suggestedMin || 0,
+              suggestedMax: this.config.ticks.suggestedMax || 30,
             }
           }]
         }

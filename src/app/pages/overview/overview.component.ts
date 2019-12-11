@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NodeDataService } from 'src/app/providers/API/node-data.service';
 import { Node, LineGraphConfig, IODeviceType } from 'src/app/providers/interfaces';
 import { ActivatedRoute } from '@angular/router';
+import { tick } from '@angular/core/testing';
 
 @Component({
   selector: 'app-overview',
@@ -48,7 +49,12 @@ export class OverviewComponent implements OnInit {
         type: this.activeNode.sensors[1].type,
         io: IODeviceType.sensor,
         color: 'blue',
-      }]
+      }],
+      ticks: {
+        beginAtZero: null,
+        suggestedMin: -5,
+        suggestedMax: null
+      }
     };
   }
 }
