@@ -27,7 +27,7 @@ export interface Actuator {
   timestamp: Date;
 }
 
-export interface SensorDataPoint {
+export interface DataPoint {
   parent: string;
   value: number;
   timestamp: Date;
@@ -42,4 +42,42 @@ export enum IONames {
   lightint = 'Light Intensity',
   flowpump = 'Flow Rate',
   foodpump = 'Nutrition Rate'
+}
+
+// export interface LineGraphConfig {
+//   data: {
+//     timestamps: Date[];
+//     datasets: {
+//       label: string,
+//       fill: boolean,
+//       data: number[],
+//       borderColor: string,
+//       borderWidth: number
+//     }[];
+//   };
+//   ticks: {
+//     beginAtZero: boolean;
+//     suggestedMin?: number;
+//     suggestedMax?: number;
+//   };
+// }
+
+export interface LineGraphConfig {
+  name: string;
+  sources: {
+    device: string;
+    type: string;
+    io: IODeviceType;
+    color: string;
+   }[];
+  ticks?: {
+    beginAtZero: boolean;
+    suggestedMin: number;
+    suggestedMax: number;
+  };
+}
+
+export enum IODeviceType {
+  sensor = 'sensor',
+  actuator = 'actuator'
 }

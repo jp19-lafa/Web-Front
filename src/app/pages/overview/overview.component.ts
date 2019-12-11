@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NodeDataService } from 'src/app/providers/API/node-data.service';
-import { Node } from 'src/app/providers/interfaces';
+import { Node, LineGraphConfig, IODeviceType } from 'src/app/providers/interfaces';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,6 +12,8 @@ export class OverviewComponent implements OnInit {
 
   nodes: Node[] = [];
   activeNode: Node;
+
+  graphConfig: LineGraphConfig;
 
   constructor(
     private nodeDataSvc: NodeDataService,
@@ -26,12 +28,27 @@ export class OverviewComponent implements OnInit {
     this.nodeDataSvc.getAllMyNodes().then((nodes) => {
       this.nodes = nodes;
       if (this.route.snapshot.params.id) {
-        this.activeNode = nodes.filter(node => node._id === this.route.snapshot.params.id)[0];
+        this.selectNode(nodes.filter(node => node._id === this.route.snapshot.params.id)[0]);
       }
     });
   }
 
   selectNode(node) {
     this.activeNode = node;
+    this.graphConfig = {
+      name: 'Temperatures',
+      sources: [{
+        device: this.activeNode.sensors[0]._id,
+        type: this.activeNode.sensors[0].type,
+        io: IODeviceType.sensor,
+        color: 'green',
+      },
+      {
+        device: this.activeNode.sensors[1]._id,
+        type: this.activeNode.sensors[1].type,
+        io: IODeviceType.sensor,
+        color: 'blue',
+      }]
+    };
   }
 }

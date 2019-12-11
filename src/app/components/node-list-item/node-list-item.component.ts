@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { Node } from 'src/app/providers/interfaces';
 
 @Component({
@@ -6,12 +6,12 @@ import { Node } from 'src/app/providers/interfaces';
   templateUrl: './node-list-item.component.html',
   styleUrls: ['./node-list-item.component.scss']
 })
-export class NodeListItemComponent implements OnInit {
+export class NodeListItemComponent implements AfterViewInit {
   @Input() node: Node;
   @ViewChild('status', { static: false }) status: ElementRef;
   constructor(private renderer: Renderer2) { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.setStatus();
   }
 

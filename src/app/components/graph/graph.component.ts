@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import * as Chart from 'chart.js';
 import { NodeDataService } from 'src/app/providers/API/node-data.service';
-import { Node } from 'src/app/providers/interfaces';
+import { LineGraphConfig, IODeviceType, IONames } from 'src/app/providers/interfaces';
 import * as moment from 'moment';
 
 @Component({
@@ -10,37 +10,52 @@ import * as moment from 'moment';
   styleUrls: ['./graph.component.scss']
 })
 export class GraphComponent implements OnInit, AfterViewInit {
-  @Input() nodeInfo: Node;
+
+  @Input() config: LineGraphConfig;
   @ViewChild('chartCanvas', { static: false }) chartCanvas: ElementRef;
+
   context: CanvasRenderingContext2D;
   chart: Chart;
-  graphData: number[];
-  graphTimes: string[];
-  graphName: string;
+
+  dataSets: any[] = [];
+  timestamps: string[] = [];
 
   constructor(private nodeDataSvc: NodeDataService) {
 
   }
 
   ngOnInit() {
+    this.config.sources.forEach(source => {
+      switch (source.io) {
+        case IODeviceType.sensor:
+          this.getSensorDataPoints(source);
+          break;
+        case IODeviceType.actuator:
+        default:
+          break;
+      }
+    });
   }
 
   ngAfterViewInit(): void {
     this.context = this.chartCanvas.nativeElement.getContext('2d');
-    this.getSpecificNode();
   }
 
-  getSpecificNode() {
-    this.nodeDataSvc.getSpecificNode(this.nodeInfo._id).then(clickedNode => {
-      this.graphName = this.nodeInfo.sensors[0].type;
-      this.getDataPoints();
-    });
-  }
-  getDataPoints() {
-    this.nodeDataSvc.getSensorDataPoints(this.nodeInfo.sensors[0]._id).then(dataPoints => {
-      this.graphData = dataPoints.data.map(point => point.value).reverse();
-      this.graphTimes = dataPoints.data.map(point => moment(new Date(point.timestamp)).format('h:mm')).reverse();
-      this.createChart();
+  getSensorDataPoints(source: any) {
+    this.nodeDataSvc.getSensorDataPoints(source.device).then(dataPoints => {
+      if (this.dataSets.length === 0) {
+        this.timestamps = dataPoints.data.map(point => moment(new Date(point.timestamp)).format('h:mm')).reverse()
+      }
+
+      this.dataSets.push({
+        label: IONames[source.type],
+        fill: false,
+        data: dataPoints.data.map(point => point.value).reverse(),
+        borderColor: source.color,
+        borderWidth: 2,
+      });
+
+      if (this.dataSets.length === this.config.sources.length) { this.createChart(); }
     });
   }
 
@@ -48,24 +63,13 @@ export class GraphComponent implements OnInit, AfterViewInit {
     this.chart = new Chart(this.context, {
       type: 'line',
       data: {
-        labels: this.graphTimes,
-        datasets: [{
-          label: this.graphName,
-          fill: false,
-          data: this.graphData,
-          backgroundColor: [
-            'rgba(76, 175, 80, 1)'
-          ],
-          borderColor: [
-            'rgba(76, 175, 80, 1)'
-          ],
-          borderWidth: 2
-        }]
+        labels: this.timestamps,
+        datasets: this.dataSets
       },
       options: {
         title: {
           display: true,
-          text: this.graphName,
+          text: this.config.name,
         },
         scales: {
           yAxes: [{

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Node, SensorDataPoint, Actuator } from '../interfaces';
+import { Node, DataPoint, Actuator } from '../interfaces';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -29,8 +29,12 @@ export class NodeDataService {
    * Get all datapoints from a specific sensor
    * @param id The Sensor ID
    */
-  getSensorDataPoints(id: string): Promise<{ data: SensorDataPoint[] }> {
-    return this.http.get<{ data: SensorDataPoint[] }>(`${environment.api}/sensors/${id}`).toPromise();
+  getSensorDataPoints(id: string, limit: number = 20): Promise<{ data: DataPoint[] }> {
+    return this.http.get<{ data: DataPoint[] }>(`${environment.api}/sensors/${id}?limit=${limit}`).toPromise();
+  }
+
+  getActuatorDataPoints(device: any): Promise<{ data: DataPoint[] }>  {
+    throw new Error('Method not implemented.');
   }
 
   patchActuator(id: string, value: number): Promise<{ data: Actuator }> {

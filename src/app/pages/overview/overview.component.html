@@ -2,12 +2,12 @@
 <div class="grid container-fluid">
   <div class="row subheader shadow"></div>
   <section class="row">
-    <div class="col-4 col-lg-3 col-xl-2 nodes">
+    <div class="col-sm-4 col-lg-3 nodes">
       <app-node-list-item [node]="node" *ngFor="let node of nodes" [routerLink]="['/overview', node._id]"
         routerLinkActive="active">
       </app-node-list-item>
     </div>
-    <main class="col-8 col-lg-9 col-xl-10">
+    <main class="col-sm-8 col-lg-9">
       <div class="noNodeSelected" *ngIf="!activeNode">
         <p>Select a farm</p>
       </div>
@@ -15,7 +15,7 @@
         <div class="title col-12">
           <h1>{{activeNode.label}}</h1>
         </div>
-        <app-graph [nodeInfo]="activeNode" class="col-12"></app-graph>
+        <app-graph [config]="graphConfig" class="col-12"></app-graph>
         <div class="controller" class="col-12">
           <div class="row">
             <app-controller class="col-4" *ngFor="let actuator of activeNode.actuators" [actuator]="actuator">
