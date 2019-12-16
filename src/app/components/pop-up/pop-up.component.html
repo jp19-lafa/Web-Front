@@ -1,0 +1,9 @@
+<div class="popUp" *ngIf="notification">
+  <div class="close" (click)="close()">
+    x
+  </div>
+  <div class="content">
+    <fa-icon [icon]="faBell"></fa-icon>
+    <p>{{notification.message}}</p>
+  </div>
+</div>

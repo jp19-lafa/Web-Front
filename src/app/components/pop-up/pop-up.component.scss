@@ -1,0 +1,35 @@
+.popUp {
+  color: rgb(255, 255, 255);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.075) !important;
+  animation-name: popUp;
+  animation-duration: 0.5s;
+  z-index: 99;
+  display: grid;
+  grid-template-rows: 1fr;
+  min-width: 20vw;
+  background: grey;
+  border-radius: 5px;
+  position: fixed;
+  right: 1rem;
+  top: 5rem;
+  .close {
+    cursor: pointer;
+    text-align: right;
+    height: 1rem;
+    padding: 0 1rem 0 0;
+  }
+  .content {
+    padding: 0.5rem 1rem 1.5rem 1rem;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+  }
+}
+
+@keyframes popUp {
+  from {
+    right: -15vw;
+  }
+  to {
+    right: 1rem;
+  }
+}

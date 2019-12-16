@@ -1,0 +1,23 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+  <h3>Login</h3>
+
+  <label for="">Email</label>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <i class="material-icons-outlined">email</i>
+    </div>
+    <input type="text" class="form-control" formControlName="email" placeholder="Your email">
+  </div>
+
+
+  <label for="">Password</label>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <i class="material-icons-outlined">lock</i>
+    </div>
+    <input type="password" class="form-control" formControlName="password" placeholder="Your password">
+  </div>
+
+  <button type="submit">Log In</button>
+  <button class="aplogin" (click)='msLogin()'>Use AP Account</button>
+</form>
