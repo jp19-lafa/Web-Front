@@ -1,0 +1,22 @@
+<app-public-navigation></app-public-navigation>
+<div class="farms">
+  <app-public-node-card *ngFor="let node of publicNodes" [node]='node'></app-public-node-card>
+</div>
+<div class='noNodesText' *ngIf="!publicDataSvc.publicNodes">
+  <p>There are no public nodes</p>
+</div>
+<div class='noNodesText' *ngIf="!publicDataSvc.activePage">
+  <p>No node selected</p>
+</div>
+<div class="farmTitle" *ngIf="publicDataSvc.activePage">
+  <p>{{publicDataSvc.activePage.label}}</p>
+</div>
+<div class='showPage'>
+  <div class="graphs" *ngIf="publicDataSvc.activePage">
+    <app-air-humidity></app-air-humidity>
+    <app-air-temperature></app-air-temperature>
+    <app-water-temperature></app-water-temperature>
+    <app-light-intensisty></app-light-intensisty>
+    <app-water-ph></app-water-ph>
+  </div>
+</div>

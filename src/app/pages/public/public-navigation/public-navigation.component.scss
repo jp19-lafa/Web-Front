@@ -1,0 +1,46 @@
+.topNavigation {
+  //box-shadow: 0 1px 5px rgba(237, 237, 237, 1);
+  top: 0;
+  font-family: 'Poppins', sans-serif;
+  position: fixed;
+  height: 4rem;
+  width: 100vw;
+  background: rgb(237, 237, 237);
+  display: grid;
+  grid-template-columns: 8rem 1fr 6rem 6rem;
+
+  .logo {
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 2rem;
+
+    strong {
+      padding: 0 .5rem 0 2rem;
+      line-height: 4rem;
+    }
+
+    .smallLogo {
+      padding: .5rem 0;
+    }
+  }
+
+  .spacer {}
+
+  .navTabs {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+
+    .tab {
+      text-align: center;
+      line-height: 4rem;
+    }
+  }
+
+  .loginButton {
+    .tab {
+      text-align: center;
+      line-height: 4rem;
+      color: rgba(76, 175, 80, 1);
+    }
+  }
+}
