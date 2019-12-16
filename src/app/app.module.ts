@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationModule } from './providers/authentication/authentication.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 //// Routing Module ////
 import { AppRoutingModule } from './app-routing.module';
 
