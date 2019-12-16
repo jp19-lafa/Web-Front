@@ -1,0 +1,34 @@
+image:  node:current-alpine
+
+stages:
+  - Build
+
+Staging Build:
+  stage: Build
+  image: docker:stable
+  services:
+    - docker:18-dind
+  before_script:
+    - "docker login registry.mira.systems -u ${DOCKER_USER} -p ${DOCKER_PASS}"
+  script:
+    - "docker build -t registry.mira.systems/farmlab/web-front:staging ."
+    - "docker push registry.mira.systems/farmlab/web-front:staging"
+  after_script:
+    - docker logout registry.mira.systems
+  except:
+    - master
+
+Production Build:
+  stage: Build
+  image: docker:stable
+  services:
+    - docker:18-dind
+  before_script:
+    - "docker login registry.mira.systems -u ${DOCKER_USER} -p ${DOCKER_PASS}"
+  script:
+    - "docker build -t registry.mira.systems/farmlab/web-front:latest ."
+    - "docker push registry.mira.systems/farmlab/web-front:latest"
+  after_script:
+    - docker logout registry.mira.systems
+  only:
+    - master
