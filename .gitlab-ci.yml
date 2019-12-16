@@ -17,6 +17,7 @@ Staging Build:
     - docker logout registry.mira.systems
   except:
     - master
+  when: manual
 
 Production Build:
   stage: Build
