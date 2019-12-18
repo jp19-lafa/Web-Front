@@ -1,0 +1,40 @@
+.adminPage {
+  padding: 72px 0 0 0;
+  min-height: 100vh;
+  .overview {
+    margin: 0 1.5rem;
+    border-bottom: 0.5px solid rgb(197, 195, 195);
+    padding: 0 10vw 1rem 10vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    .card {
+      cursor: pointer;
+      border-radius: 5px;
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.075);
+      padding: 1rem;
+      text-align: center;
+      margin: 1rem 1rem 0 1rem;
+      border: 0.5px solid rgb(197, 195, 195);
+      p {
+        margin: 0;
+        padding: 0.5rem;
+      }
+    }
+    .addFarm {
+      cursor: pointer;
+      border-radius: 5px;
+      background: rgb(85, 215, 122);
+      box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.075);
+      padding: 1rem;
+      text-align: center;
+      margin: 1rem 1rem 0 1rem;
+      border: 0.5px solid rgb(197, 195, 195);
+      p {
+        margin: 0;
+        font-size: larger;
+        line-height: 5rem;
+        color: rgb(255, 255, 255);
+      }
+    }
+  }
+}

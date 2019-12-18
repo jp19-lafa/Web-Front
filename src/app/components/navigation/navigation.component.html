@@ -1,5 +1,5 @@
 <header>
-  <div class="left">
+  <div class="left" [routerLink]="['/overview']">
     FarmLab
   </div>
   <ul class="right">
@@ -7,7 +7,7 @@
       <fa-icon [icon]="faBell"></fa-icon>
       Notifications
     </li>
-    <li>
+    <li [routerLink]="['/admin']">
       <fa-icon [icon]="faUserCircle"></fa-icon>
       My Account
       <fa-icon [icon]="faChevronDown" style="font-size: .8rem;"></fa-icon>

@@ -9,6 +9,14 @@ export interface Node {
   livesince: Date;
 }
 
+export interface NewNode {
+  status: boolean;
+  allowPublicStats: boolean;
+  label: string;
+  livesince: Date;
+  members: Member[];
+}
+
 export interface Member {
   _id: string;
   firstname: string;
@@ -69,7 +77,7 @@ export interface LineGraphConfig {
     type: string;
     io: IODeviceType;
     color: string;
-   }[];
+  }[];
   ticks: {
     beginAtZero: boolean;
     suggestedMin: number;
