@@ -31,6 +31,7 @@ import { AirTemperatureComponent } from './pages/public/charts/air-temperature/a
 import { LightIntensistyComponent } from './pages/public/charts/light-intensisty/light-intensisty.component';
 import { AirHumidityComponent } from './pages/public/charts/air-humidity/air-humidity.component';
 import { WaterPhComponent } from './pages/public/charts/water-ph/water-ph.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { WaterPhComponent } from './pages/public/charts/water-ph/water-ph.compon
     ControllerComponent,
     ValueCardComponent,
     GraphComponent,
-    PopUpComponent
+    PopUpComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
