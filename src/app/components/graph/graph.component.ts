@@ -68,8 +68,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
     });
   }
 
-  createChart() {
-    console.log(this.dataSets);
+  createChart() {;
     this.chart = new Chart(this.context, {
       type: 'line',
       data: {
