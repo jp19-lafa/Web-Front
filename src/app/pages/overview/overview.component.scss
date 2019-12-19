@@ -1,3 +1,26 @@
+.row.subheader.shadow {
+  padding: 0 2rem;
+  display: flex;
+  align-content: center;
+  .floatRight {
+    position: absolute;
+    right: 2rem;
+  }
+  .topButtons {
+    cursor: pointer;
+    font-size: smaller;
+    height: 2rem;
+    line-height: 2rem;
+    margin: 0.5rem;
+    // border: 0.2px solid rgba(128, 128, 128, 0.5);
+    padding: 0 0.5rem;
+    fa-icon {
+      display: inline-block;
+      margin: 0 0.5rem 0 0;
+    }
+  }
+}
+
 .subheader {
   position: fixed;
   top: 72px;
