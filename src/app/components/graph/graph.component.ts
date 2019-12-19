@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input, EventEmitter } from '@angular/core';
 import * as Chart from 'chart.js';
 import { NodeDataService } from 'src/app/providers/API/node-data.service';
 import { LineGraphConfig, IODeviceType, IONames } from 'src/app/providers/interfaces';
@@ -12,6 +12,7 @@ import * as moment from 'moment';
 export class GraphComponent implements OnInit, AfterViewInit {
 
   @Input() config: LineGraphConfig;
+  @Input() updated: EventEmitter<LineGraphConfig>;
   @ViewChild('chartCanvas', { static: false }) chartCanvas: ElementRef;
 
   context: CanvasRenderingContext2D;
@@ -20,11 +21,19 @@ export class GraphComponent implements OnInit, AfterViewInit {
   dataSets: any[] = [];
   timestamps: string[] = [];
 
-  constructor(private nodeDataSvc: NodeDataService) {
-
-  }
+  constructor(private nodeDataSvc: NodeDataService) {}
 
   ngOnInit() {
+    this.init();
+    this.updated.subscribe(config => {
+      this.config = config;
+      this.dataSets = [];
+      this.timestamps = [];
+      this.init();
+    });
+  }
+
+  init() {
     this.config.sources.forEach(source => {
       switch (source.io) {
         case IODeviceType.sensor:
@@ -60,6 +69,7 @@ export class GraphComponent implements OnInit, AfterViewInit {
   }
 
   createChart() {
+    console.log(this.dataSets);
     this.chart = new Chart(this.context, {
       type: 'line',
       data: {

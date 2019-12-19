@@ -1,0 +1,13 @@
+<div class="view row" *ngIf="node">
+  <div class="title col-12">
+    <h1>{{ node.label }}</h1>
+  </div>
+  <app-graph [config]="graphConfig" [updated]="updated" class="col-12"></app-graph>
+  <div class="controller" class="col-12">
+    <div class="row">
+      <app-controller class="col-4" *ngFor="let actuator of node.actuators" [actuator]="actuator">
+      </app-controller>
+      <app-value-card class="col-4" *ngFor="let sensor of node.sensors" [sensor]="sensor"></app-value-card>
+    </div>
+  </div>
+</div>

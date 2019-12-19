@@ -12,13 +12,9 @@ import { tick } from '@angular/core/testing';
 export class OverviewComponent implements OnInit {
 
   nodes: Node[] = [];
-  activeNode: Node;
+  isBaseRoute: boolean;
 
-  graphConfig: LineGraphConfig;
-
-  constructor(
-    private nodeDataSvc: NodeDataService,
-    private route: ActivatedRoute) {
+  constructor(private nodeDataService: NodeDataService) {
   }
 
   ngOnInit() {
@@ -26,35 +22,8 @@ export class OverviewComponent implements OnInit {
   }
 
   getNodes() {
-    this.nodeDataSvc.getAllMyNodes().then((nodes) => {
+    this.nodeDataService.getAllMyNodes().then((nodes) => {
       this.nodes = nodes;
-      if (this.route.snapshot.params.id) {
-        this.selectNode(nodes.filter(node => node._id === this.route.snapshot.params.id)[0]);
-      }
     });
-  }
-
-  selectNode(node) {
-    this.activeNode = node;
-    this.graphConfig = {
-      name: 'Temperatures',
-      sources: [{
-        device: this.activeNode.sensors[0]._id,
-        type: this.activeNode.sensors[0].type,
-        io: IODeviceType.sensor,
-        color: 'green',
-      },
-      {
-        device: this.activeNode.sensors[1]._id,
-        type: this.activeNode.sensors[1].type,
-        io: IODeviceType.sensor,
-        color: 'blue',
-      }],
-      ticks: {
-        beginAtZero: null,
-        suggestedMin: -5,
-        suggestedMax: null
-      }
-    };
   }
 }
