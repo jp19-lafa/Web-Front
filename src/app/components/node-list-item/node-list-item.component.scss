@@ -5,6 +5,7 @@
   grid-template-columns: 5rem 1fr;
   width: 100%;
   border-radius: 5px;
+  margin: 0 0 1rem 0;
   .status {
     padding: 0 0 0 1rem;
     .upperCircle {
@@ -31,7 +32,7 @@
     line-height: 7rem;
   }
   &:hover {
-    background: rgba(255, 255, 255, .9);
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   }
 }
