@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { NodeDataService } from 'src/app/providers/API/node-data.service';
+import { NodeDataService } from 'src/app/providers/api/node-data.service';
 import { Node, LineGraphConfig, IODeviceType } from 'src/app/providers/interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { tick } from '@angular/core/testing';
