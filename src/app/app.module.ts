@@ -1,9 +1,10 @@
 //// Modules ////
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationModule } from './providers/authentication/authentication.module';
+import { SentryErrorHandler } from './providers/error/sentry';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 //// Routing Module ////
@@ -62,7 +63,10 @@ import { WaterPhComponent } from './pages/public/charts/water-ph/water-ph.compon
     AuthenticationModule,
     FontAwesomeModule
   ],
-  providers: [PublicDataService],
+  providers: [
+    PublicDataService,
+    { provide: ErrorHandler, useClass: SentryErrorHandler }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
