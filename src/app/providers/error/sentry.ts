@@ -1,8 +1,10 @@
 import { ErrorHandler, Injectable } from '@angular/core';
 import * as Sentry from '@sentry/browser';
+import { environment } from 'src/environments/environment';
 
 Sentry.init({
-  dsn: 'https://08976e7c5ea248f78fcdb979d253f9c0@sentry.io/1871601'
+  dsn: environment.sentry,
+  environment: environment.production ? 'production' : 'development'
 });
 
 @Injectable()
