@@ -10,11 +10,9 @@ export interface Node {
 }
 
 export interface NewNode {
-  status: boolean;
-  allowPublicStats: boolean;
   label: string;
-  livesince: Date;
-  members: Member[];
+  macAddress: string;
+  allowPublicStats: boolean;
 }
 
 export interface Member {
