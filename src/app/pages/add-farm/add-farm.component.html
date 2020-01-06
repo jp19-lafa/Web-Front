@@ -1,0 +1,30 @@
+<app-pop-up></app-pop-up>
+<div class="addFarm">
+  <p id="title">Create new farm</p>
+  <form class="form" [formGroup]="newNodeForm" (ngSubmit)="onSubmit(newNodeForm)">
+    <!-- <div class=" field">
+      <label for="name">Label</label>
+      <input #label type="text" formControlName="label" placeholder="Farm label">
+    </div> -->
+    <div class="field">
+      <label for="public">MAC-address</label>
+      <input type="text" #macAddress formControlName="macAddress" placeholder="Mac-address">
+    </div>
+    <!-- <div class="field">
+      <label for="">Allow publication of the farms data?</label>
+      <label class="switch">
+        <input type="checkbox" (change)="togglePublic()">
+        <span class="slider round"></span>
+      </label>
+    </div> -->
+    <button type="submit" id="createButton" [disabled]="newNodeForm.valid">Create farm</button>
+  </form>
+  <div *ngIf="node" class="nodeInfo">
+    <img
+      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS1taXRlcmxpbWl0PSIxLjQxNCIgY2xpcC1ydWxlPSJldmVub2RkIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj48Zz48cGF0aCBmaWxsPSIjNENBRjUwIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGQ9Ik0xODguODY0LDY3LjM0OUMxNDcuODE5LDI2LjMyNSA2Ny40OTksMjEuNTY4IDEwLjY2NywyMS41NjhDNC43NzYsMjEuNTY4IDAsMjYuMzQ0IDAsMzIuMjM1QzAsODkuMDg4IDQuNzU3LDE2OS40MDggNDUuNzgxLDIxMC40NTRDNjUuMDQyLDIyNy42MDggOTAuMjE5LDIzNi41OTcgMTE1Ljk4OSwyMzUuNTIxQzE0Mi41NiwyMzYuNTY4IDE2OC41NTksMjI3LjYyNSAxODguODY0LDIxMC40NTRDMjE5LjQzNSwxNzkuODYxIDIyNS4wNDUsMTAzLjUzMSAxODguODY0LDY3LjM0OVoiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsMjEuMDk5LDYzLjc2NSkiLz48L2c+PGc+PHBhdGggZmlsbD0iIzRDQUY1MCIgZmlsbC1ydWxlPSJub256ZXJvIiBkPSJNNDU5LjEzNiw2My43NjVDNDAyLjI4Myw2My43NjUgMzIxLjk2Myw2OC41MjIgMjgwLjkxNywxMDkuNTQ2QzI0NC42NSwxNDUuODEzIDI1MC4zNDYsMjIyLjAzNyAyODAuOTE3LDI1Mi42MjlDMzAxLjIyOCwyNjkuODAzIDMyNy4yMzUsMjc4Ljc0NiAzNTMuODEzLDI3Ny42OTZDMzc5LjU4MiwyNzguNzcgNDA0Ljc1OSwyNjkuNzgxIDQyNC4wMjEsMjUyLjYyOUM0NjUuMDY2LDIxMS41ODQgNDY5LjgwMiwxMzEuMjY0IDQ2OS44MDIsNzQuNDFDNDY5Ljc5MSw2OC41MjggNDY1LjAxOSw2My43NjUgNDU5LjEzNiw2My43NjVaIiB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwxLDIxLjA5OSw2My43NjUpIi8+PC9nPjxnPjxwYXRoIGZpbGw9IiMzODhFM0MiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTIyNCw0NDguMjM1QzIxOC4xMDksNDQ4LjIzNSAyMTMuMzMzLDQ0My40NTkgMjEzLjMzMyw0MzcuNTY4QzIxMy4zMzMsMjExLjMyOCAxMzAuMzY4LDE1NC41NiA5OS4xMzYsMTMzLjIwNUM5NS4zNjksMTMwLjggOTEuODAyLDEyOC4wOTYgODguNDY5LDEyNS4xMkM4NC4zNzYsMTIwLjg4MyA4NC40OTQsMTE0LjEzIDg4LjczMSwxMTAuMDM3QzkyLjg2NSwxMDYuMDQ0IDk5LjQxOCwxMDYuMDQ0IDEwMy41NTIsMTEwLjAzN0MxMDUuOTYxLDExMi4wNzQgMTA4LjUxMywxMTMuOTM1IDExMS4xODksMTE1LjYwNUMxMzguOTIyLDEzNC41NyAyMDQuMjQ1LDE3OS4yNjQgMjI2LjgzNywzMjUuODY2QzI0NC4yOTYsMjQ5LjIyMSAyOTYuMDUsMTg0Ljg3MSAzNjcuMTY4LDE1MS4zODFDMzcyLjYxNCwxNDguODE5IDM3OS4xMTQsMTUwLjg3MSAzODIuMTAxLDE1Ni4wOTZDMzg0Ljc5OSwxNjAuODUxIDM4My4xMzMsMTY2Ljg5MiAzNzguMzc4LDE2OS41OTFDMzc4LjIsMTY5LjY5MiAzNzguMDE4LDE2OS43ODggMzc3LjgzNCwxNjkuODc4TDM3Ni4xMDYsMTcwLjY4OUMyNTkuMTU3LDIyNS42NjUgMjM0LjYwMiwzNDYuMTU2IDIzNC42MDIsNDM3LjU2OUMyMzQuNjAzLDQ0My40MzQgMjI5Ljg2Niw0NDguMTk5IDIyNCw0NDguMjM1WiIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwyMS4wOTksNjMuNzY1KSIvPjwvZz48L3N2Zz4=">
+    <div class="connectInfo">
+      <p> AuthorizationKey: {{node.authorizationKey}}</p>
+      <p> PairingKey: {{node.pairingKey}}</p>
+    </div>
+  </div>
+</div>

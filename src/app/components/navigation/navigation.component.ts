@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { faChevronDown, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle, faBell } from '@fortawesome/free-regular-svg-icons';
 
@@ -8,15 +8,25 @@ import { faUserCircle, faBell } from '@fortawesome/free-regular-svg-icons';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-
+  @ViewChild('dropdown', { static: false }) dropdown: ElementRef;
   public faPlus = faPlus;
   public faBell = faBell;
   public faUserCircle = faUserCircle;
   public faChevronDown = faChevronDown;
+  clickedMyAccount: boolean;
 
-  constructor() { }
+  constructor(private renderer2: Renderer2) { }
 
   ngOnInit() {
+  }
+  openMyAccount() {
+    this.clickedMyAccount = !this.clickedMyAccount;
+    if (this.clickedMyAccount) {
+      this.renderer2.addClass(this.dropdown.nativeElement, 'show');
+    } else {
+      this.renderer2.removeClass(this.dropdown.nativeElement, 'show');
+    }
+
   }
 
 }

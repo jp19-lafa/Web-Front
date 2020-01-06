@@ -9,7 +9,7 @@ Sentry.init({
 
 @Injectable()
 export class SentryErrorHandler implements ErrorHandler {
-  constructor() {}
+  constructor() { }
   handleError(error) {
     const eventId = Sentry.captureException(error.originalError || error);
     // Sentry.showReportDialog({ eventId });

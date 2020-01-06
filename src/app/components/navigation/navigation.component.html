@@ -1,5 +1,5 @@
 <header>
-  <div class="left">
+  <div class="left" [routerLink]="['/overview']">
     FarmLab
   </div>
   <ul class="right">
@@ -8,10 +8,16 @@
       Notifications
     </li>
     <li>
-      <fa-icon [icon]="faUserCircle"></fa-icon>
-      My Account
-      <fa-icon [icon]="faChevronDown" style="font-size: .8rem;"></fa-icon>
+      <div class="dropdown">
+        <fa-icon [icon]="faUserCircle"></fa-icon>
+        <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" (click)="openMyAccount()">
+          My account
+        </a>
+        <div class="dropdown-menu" #dropdown>
+          <a class="dropdown-item" [routerLink]="['/admin']">Create new farm</a>
+          <a class="dropdown-item" [routerLink]="['/login']">Logout</a>
+        </div>
+      </div>
     </li>
-
   </ul>
 </header>
