@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NodeDataService } from 'src/app/providers/API/node-data.service';
+import { NodeDataService } from 'src/app/providers/api/node-data.service';
 import { Actuator, IONames } from 'src/app/providers/interfaces';
-import { NotificationService, NotificationType } from 'src/app/providers/API/notification.service';
+import { NotificationService, NotificationType } from 'src/app/providers/api/notification.service';
 
 @Component({
   selector: 'app-controller',

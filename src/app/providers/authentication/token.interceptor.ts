@@ -19,8 +19,8 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(catchError(error => {
-      if (error instanceof HttpErrorResponse && error.status === 498) {
-        return this.handle498Error(request, next);
+      if (error instanceof HttpErrorResponse && error.status === 401 && error.headers['Token-Expired']) {
+        return this.handle401Error(request, next);
       } else {
         return throwError(error);
       }
@@ -35,7 +35,7 @@ export class TokenInterceptor implements HttpInterceptor {
     });
   }
 
-  private handle498Error(request: HttpRequest<any>, next: HttpHandler) {
+  private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
 
     if (!this.isRefreshing) {
       this.isRefreshing = true;

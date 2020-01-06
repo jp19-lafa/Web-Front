@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://api.farmlab.team'
+  api: 'http://localhost:5000',
+  sentry: 'https://08976e7c5ea248f78fcdb979d253f9c0@sentry.io/1871601'
 };
 
 /*
