@@ -2,23 +2,22 @@
 <div class="addFarm">
   <p id="title">Create new farm</p>
   <form class="form" [formGroup]="newNodeForm" (ngSubmit)="onSubmit(newNodeForm)">
-    <div class=" field">
+    <!-- <div class=" field">
       <label for="name">Label</label>
       <input #label type="text" formControlName="label" placeholder="Farm label">
-    </div>
+    </div> -->
     <div class="field">
       <label for="public">MAC-address</label>
       <input type="text" #macAddress formControlName="macAddress" placeholder="Mac-address">
     </div>
-    <div class="field">
+    <!-- <div class="field">
       <label for="">Allow publication of the farms data?</label>
       <label class="switch">
         <input type="checkbox" (change)="togglePublic()">
         <span class="slider round"></span>
       </label>
-    </div>
-    <button type="submit" id="createButton" [disabled]="newNodeForm.valid">Create
-      farm</button>
+    </div> -->
+    <button type="submit" id="createButton" [disabled]="newNodeForm.valid">Create farm</button>
   </form>
   <div *ngIf="node" class="nodeInfo">
     <img

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Member } from 'src/app/providers/interfaces';
+import { NodeDataService } from 'src/app/providers/API/node-data.service';
 
 @Component({
   selector: 'app-users',
@@ -8,8 +9,10 @@ import { Member } from 'src/app/providers/interfaces';
 })
 export class UsersComponent implements OnInit {
   @Input() members: Member[] = [];
-  constructor() {
-    this.members.push({ firstname: 'jonas', lastname: 'van hoof', _id: 'd123qwdw23djq123owd' });
+  constructor(private nodeDataSvc: NodeDataService) {
+    this.nodeDataSvc.getAllsUsersFromAdmin().subscribe(users => {
+      this.members = users;
+    });
   }
 
   ngOnInit() {

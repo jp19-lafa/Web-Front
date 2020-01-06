@@ -28,5 +28,15 @@ header {
         padding: 0 0.2rem;
       }
     }
+    #dropdownMenuLink {
+      background: rgb(85, 215, 122);
+      color: rgba($color: #ffffff, $alpha: 0.95);
+      border: none;
+    }
+    .dropdown-menu {
+      .dropdown-item:hover {
+        color: rgb(85, 215, 122);
+      }
+    }
   }
 }

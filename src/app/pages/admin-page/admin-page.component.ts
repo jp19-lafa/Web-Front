@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NodeDataService } from 'src/app/providers/API/node-data.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -9,12 +10,16 @@ import { Router } from '@angular/router';
 export class AdminPageComponent implements OnInit {
   showAddFarm: boolean;
   showUsers: boolean;
-  constructor(private router: Router) {
+  members: number;
+  nodes: number;
+  constructor(private router: Router, private nodeDataSvc: NodeDataService) {
     this.showAddFarm = true;
     this.showUsers = false;
   }
 
   ngOnInit() {
+    this.nodeDataSvc.getAllsUsersFromAdmin().subscribe(users => { this.members = users.length; });
+    this.nodeDataSvc.getAllMyNodes().then(nodes => { this.nodes = nodes.length; });
   }
 
   addFarm() {

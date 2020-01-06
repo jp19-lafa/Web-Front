@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Node, DataPoint, Actuator, NewNode } from '../interfaces';
+import { Node, DataPoint, Actuator, NewNode, Member } from '../interfaces';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -53,5 +53,12 @@ export class NodeDataService {
    */
   postNode(node: NewNode) {
     return this.http.post<Node>(`${environment.api}/nodes`, node);
+  }
+
+  /**
+   * Get all users
+   */
+  getAllsUsersFromAdmin() {
+    return this.http.get<Member[]>(`${environment.api}/users`);
   }
 }
