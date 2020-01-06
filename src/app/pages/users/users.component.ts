@@ -7,9 +7,9 @@ import { Member } from 'src/app/providers/interfaces';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  @Input() users: Member[] = [];
+  @Input() members: Member[] = [];
   constructor() {
-    this.users.push({ firstname: 'jonas', lastname: 'van hoof', _id: 'd123qwdw23djq123owd' });
+    this.members.push({ firstname: 'jonas', lastname: 'van hoof', _id: 'd123qwdw23djq123owd' });
   }
 
   ngOnInit() {

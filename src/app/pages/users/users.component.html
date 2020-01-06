@@ -4,6 +4,5 @@
     <p>lastname</p>
     <p>id</p>
   </div>
-  <app-user></app-user>
-  <!-- *ngFor="let user of users" [user]="user" -->
+  <app-user *ngFor="let member of members" [member]='member'></app-user>
 </div>
