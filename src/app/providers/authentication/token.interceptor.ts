@@ -19,7 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
     }
 
     return next.handle(request).pipe(catchError(error => {
-      if (error instanceof HttpErrorResponse && error.status === 401 && error.headers['Token-Expired']) {
+      if (error instanceof HttpErrorResponse && error.status === 401 && error.error.error && error.error.error === 'Invalid Token') {
         return this.handle401Error(request, next);
       } else {
         return throwError(error);
