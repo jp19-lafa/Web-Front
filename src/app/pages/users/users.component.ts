@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Member } from 'src/app/providers/interfaces';
-import { NodeDataService } from 'src/app/providers/API/node-data.service';
+import { NodeDataService } from 'src/app/providers/api/node-data.service';
 
 @Component({
   selector: 'app-users',

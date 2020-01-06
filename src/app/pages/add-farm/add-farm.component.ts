@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { NewNode, Node } from 'src/app/providers/interfaces';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { NodeDataService } from 'src/app/providers/API/node-data.service';
-import { NotificationService, NotificationType } from 'src/app/providers/API/notification.service';
+import { NodeDataService } from 'src/app/providers/api/node-data.service';
+import { NotificationService, NotificationType } from 'src/app/providers/api/notification.service';
 
 @Component({
   selector: 'app-add-farm',

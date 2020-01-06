@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NodeDataService } from 'src/app/providers/API/node-data.service';
+import { NodeDataService } from 'src/app/providers/api/node-data.service';
 
 @Component({
   selector: 'app-admin-page',
