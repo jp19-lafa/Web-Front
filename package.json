@@ -7,7 +7,8 @@
     "build": "ng build --output-path dist --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "docker:deploy": "docker build -t registry.mira.systems/farmlab/web-front:latest . && docker push registry.mira.systems/farmlab/web-front:latest"
   },
   "private": true,
   "dependencies": {
