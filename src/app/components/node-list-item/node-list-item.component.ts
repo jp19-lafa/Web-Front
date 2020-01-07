@@ -13,6 +13,7 @@ export class NodeListItemComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.setStatus();
+    console.log(this.node.sensors[3].value);
   }
 
   setStatus() {
