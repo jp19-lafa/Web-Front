@@ -1,5 +1,5 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { NewNode, Node } from 'src/app/providers/interfaces';
+import { Component, OnInit } from '@angular/core';
+import { Node } from 'src/app/providers/interfaces';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NodeDataService } from 'src/app/providers/api/node-data.service';
 import { NotificationService, NotificationType } from 'src/app/providers/api/notification.service';
@@ -10,10 +10,6 @@ import { NotificationService, NotificationType } from 'src/app/providers/api/not
   styleUrls: ['./add-farm.component.scss']
 })
 export class AddFarmComponent implements OnInit {
-  newNode: NewNode;
-  @ViewChild('label', { static: false }) label: ElementRef;
-  @ViewChild('macAddress', { static: false }) macAddress: ElementRef;
-  allowPublicData = false;
 
   newNodeForm: FormGroup;
   node: Node;
@@ -23,33 +19,21 @@ export class AddFarmComponent implements OnInit {
 
   ngOnInit() {
     this.newNodeForm = this.formBuilder.group({
-      label: ['', Validators.min(3)],
       macAddress: ['', Validators.pattern('^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$')]
     });
   }
-  togglePublic() {
-    this.allowPublicData = !this.allowPublicData;
-  }
-  setNewNodeData() {
-    this.newNode = {
-      label: this.label.nativeElement.value,
-      macAddress: this.macAddress.nativeElement.value,
-      allowPublicStats: this.allowPublicData
-    };
-  }
 
-  onSubmit(node: FormGroup) {
-    if (node.valid) {
-      this.setNewNodeData();
-      this.nodeDataSvc.postNode(this.newNode).subscribe(createdNode => {
-        this.node = createdNode;
+  onSubmit(form: FormGroup) {
+    console.log('submit');
+    if (form.valid) {
+      this.nodeDataSvc.postNode(this.newNodeForm.value).then(node => {
+        this.node = node;
       });
-    } else if (node.invalid) {
+    } else {
       this.notificationSvc.notification.next({
         message: 'Invalid input',
         type: NotificationType.info
-      }
-      );
+      });
     }
   }
 

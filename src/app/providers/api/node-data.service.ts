@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Node, DataPoint, Actuator, NewNode, Member } from '../interfaces';
+import { Node, DataPoint, Actuator, Member } from '../interfaces';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -51,8 +51,8 @@ export class NodeDataService {
    * Info to create a new node
    * @param node The new node that will be created
    */
-  postNode(node: NewNode) {
-    return this.http.post<Node>(`${environment.api}/nodes`, node);
+  postNode(node: Node): Promise<Node> {
+    return this.http.post<Node>(`${environment.api}/nodes`, node).toPromise();
   }
 
   /**

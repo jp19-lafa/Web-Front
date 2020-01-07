@@ -1,18 +1,14 @@
 export interface Node {
-  status: boolean;
-  allowPublicStats: boolean;
-  members: Member[];
-  sensors: Sensor[];
-  actuators: Actuator[];
-  _id: string;
-  label: string;
-  livesince: Date;
-}
-
-export interface NewNode {
-  label: string;
-  macAddress: string;
-  allowPublicStats: boolean;
+  status?: boolean;
+  allowPublicStats?: boolean;
+  members?: Member[];
+  sensors?: Sensor[];
+  actuators?: Actuator[];
+  _id?: string;
+  label?: string;
+  livesince?: Date;
+  pairingKey?: string;
+  authorizationKey?: string;
 }
 
 export interface Member {

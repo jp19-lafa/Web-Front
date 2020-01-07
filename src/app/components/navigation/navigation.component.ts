@@ -1,6 +1,8 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { faChevronDown, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle, faBell } from '@fortawesome/free-regular-svg-icons';
+import { AuthenticationService } from 'src/app/providers/authentication/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -15,18 +17,22 @@ export class NavigationComponent implements OnInit {
   public faChevronDown = faChevronDown;
   clickedMyAccount: boolean;
 
-  constructor(private renderer2: Renderer2) { }
+  constructor(private renderer2: Renderer2, private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
   }
-  openMyAccount() {
-    this.clickedMyAccount = !this.clickedMyAccount;
-    if (this.clickedMyAccount) {
-      this.renderer2.addClass(this.dropdown.nativeElement, 'show');
-    } else {
-      this.renderer2.removeClass(this.dropdown.nativeElement, 'show');
-    }
 
+  openDropdown() {
+    this.renderer2.addClass(this.dropdown.nativeElement, 'show');
+  }
+
+  closeDropdown() {
+    this.renderer2.removeClass(this.dropdown.nativeElement, 'show');
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['login']);
   }
 
 }
