@@ -12,7 +12,7 @@ export class MicrosoftLoginService {
     auth: {
       clientID: '70da46a1-aa1c-4c23-86d5-15a047c09909',
       authority: 'https://login.microsoftonline.com/33d8cf3c-2f14-48c0-9ad6-5d2825533673',
-      redirectUri: 'http://localhost:4200/authentication',
+      redirectUri: 'https://farmlab.team/authentication',
     },
     options: {
       cacheLocation: "localStorage",

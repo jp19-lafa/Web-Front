@@ -1,7 +1,7 @@
 <div class="node">
   <div class="status">
     <div class="upperCircle shadow-sm" #status></div>
-    <div class="lowerCircle shadow">12&deg;C</div>
+    <div class="lowerCircle shadow">{{nodeAirTemperature | number: '0.0-0'}}&deg;C</div>
   </div>
   <p>{{ node.label | slice:0:13}}</p>
 </div>
