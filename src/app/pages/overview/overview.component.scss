@@ -9,13 +9,13 @@
 
 section {
   position: fixed;
-  top: 136px;
+  top: 72px;
   z-index: 55;
   width: 100%;
 }
 
 .nodes {
-  height: calc(100vh - 136px);
+  height: calc(100vh - 72px);
   width: 100%;
   background: rgba(85, 215, 122);
   padding-top: 1.5rem;
@@ -36,7 +36,7 @@ section {
 main {
   overflow-y: auto;
   padding-top: 2rem;
-  max-height: calc(100vh - 136px);
+  max-height: calc(100vh - 72px);
 }
 
 .view {

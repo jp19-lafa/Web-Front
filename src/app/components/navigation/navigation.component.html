@@ -8,14 +8,14 @@
       Notifications
     </li>
     <li>
-      <div class="dropdown">
+      <div class="dropdown" (mouseover)="openDropdown()" (mouseleave)="closeDropdown()">
         <fa-icon [icon]="faUserCircle"></fa-icon>
-        <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" (click)="openMyAccount()">
+        <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink">
           My account
         </a>
         <div class="dropdown-menu" #dropdown>
           <a class="dropdown-item" [routerLink]="['/admin']">Create new farm</a>
-          <a class="dropdown-item" [routerLink]="['/login']">Logout</a>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
         </div>
       </div>
     </li>
