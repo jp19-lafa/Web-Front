@@ -9,11 +9,12 @@ import { Node } from 'src/app/providers/interfaces';
 export class NodeListItemComponent implements AfterViewInit {
   @Input() node: Node;
   @ViewChild('status', { static: false }) status: ElementRef;
+  nodeAirTemperature: number;
   constructor(private renderer: Renderer2) { }
 
   ngAfterViewInit() {
     this.setStatus();
-    console.log(this.node.sensors[3].value);
+    this.nodeAirTemperature = this.node.sensors.filter(sensors => sensors.type === 'airtemp')[0].value;
   }
 
   setStatus() {
